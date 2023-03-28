@@ -1,6 +1,7 @@
-package P1-entrega3;
+package Modelo;
 
 public interface Usuario {
 
 
 }
+

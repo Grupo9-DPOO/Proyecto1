@@ -1,16 +1,24 @@
 package Modelo;
 
-public class Administrador {
-    
-    private List<Habitacion> habitaciones;
-    private List<Producto> productos;
+import java.util.ArrayList;
 
-    public Administrador() {
-        habitaciones = new ArrayList<>();
-        productos = new ArrayList<>();
+public class Administrador{
+    
+    //private List<Habitacion> habitaciones;
+    //private List<Producto> productos;
+    private String nombre;
+    private String login;
+    private String password;
+    private ArrayList<Habitacion> habitaciones = new ArrayList<>();
+    private ArrayList<Producto> productos = new ArrayList<>();
+
+    public Administrador(String nombre, String login, String password) {
+        this.nombre = nombre;
+        this.login = login;
+        this.password = password;
     }
 
-    public void modificarPrecioHabitacion(int habitacionId, double nuevoPrecio) {
+    public void modificarPrecioHabitacion(String habitacionId, float nuevoPrecio) {
         for (Habitacion habitacion : habitaciones) {
             if (habitacion.getId() == habitacionId) {
                 habitacion.setPrecio(nuevoPrecio);
@@ -30,7 +38,7 @@ public class Administrador {
         }
     }
 
-    public void modificarHabitacion(int habitacionId, Habitacion habitacionModificada) {
+    public void modificarHabitacion(String habitacionId, Habitacion habitacionModificada) {
         for (int i = 0; i < habitaciones.size(); i++) {
             if (habitaciones.get(i).getId() == habitacionId) {
                 habitaciones.set(i, habitacionModificada);
@@ -43,12 +51,31 @@ public class Administrador {
         productos.add(producto);
     }
 
-    public void modificarProductos(int productoId, Producto productoModificado) {
+    public void modificarProductos(String productoId, Producto productoModificado) {
         for (int i = 0; i < productos.size(); i++) {
-            if (productos.get(i).getId() == productoId) {
+            if (productos.get(i).getNombre() == productoId) {
                 productos.set(i, productoModificado);
                 break;
             }
         }
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    public String getLogin() {
+        return login;
+    }
+    public void setLogin(String login) {
+        this.login = login;
+    }
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

@@ -1,0 +1,42 @@
+101,estandar,planta baja,2,S,S,N
+102,suite,planta baja,4,S,S,S
+103,suite doble,planta baja,6,S,S,N
+104,estandar,planta baja,2,N,N,N
+105,suite,planta baja,4,N,N,S
+106,suite doble,planta baja,6,N,N,N
+201,estandar,primer piso,2,S,N,N
+202,suite,primer piso,4,S,N,S
+203,suite doble,primer piso,6,S,N,N
+204,estandar,primer piso,2,N,S,N
+205,suite,primer piso,4,N,S,S
+206,suite doble,primer piso,6,N,S,N
+301,estandar,segundo piso,2,S,S,N
+302,suite,segundo piso,4,S,S,S
+303,suite doble,segundo piso,6,S,S,N
+304,estandar,segundo piso,2,N,N,N
+305,suite,segundo piso,4,N,N,S
+306,suite doble,segundo piso,6,N,N,N
+401,estandar,tercer piso,2,S,N,N
+402,suite,tercer piso,4,S,N,S
+403,suite doble,tercer piso,6,S,N,N
+404,estandar,tercer piso,2,N,S,N
+405,suite,tercer piso,4,N,S,S
+406,suite doble,tercer piso,6,N,S,N
+501,estandar,cuarto piso,2,S,S,N
+502,suite,cuarto piso,4,S,S,S
+503,suite doble,cuarto piso,6,S,S,N
+504,estandar,cuarto piso,2,N,N,N
+505,suite,cuarto piso,4,N,N,S
+506,suite doble,cuarto piso,6,N,N,N
+601,estandar,quinto piso,2,S,N,N
+602,suite,quinto piso,4,S,N,S
+603,suite doble,quinto piso,6,S,N,N
+604,estandar,quinto piso,2,N,S,N
+605,suite,quinto piso,4,N,S,S
+606,suite doble,quinto piso,6,N,S,N
+701,estandar,sexto piso,2,S,S,N
+702,suite,sexto piso,4,S,S,S
+703,suite doble,sexto piso,6,S,S,N
+704,estandar,sexto piso,2,N,N,N
+705,suite,sexto piso,4,N,N,S
+706,suite doble,sexto piso,6,N,N,N

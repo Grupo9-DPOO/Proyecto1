@@ -1,6 +1,7 @@
 package Modelo;
 
 public class Habitacion {
+
     private String id;
     private String ubicacion;
     private Integer capacidad;
@@ -8,59 +9,60 @@ public class Habitacion {
     private float precio;
     private Boolean ocupada;
     private Cama cama;
-    private String tipo;
     private Boolean balcon;
     private Boolean cocina;
     private Boolean vista;
     private String fechaEntrada;
     private String fechaSalida;
-}
 
-public Hbitacion(String id, String ubicacion, Integer capacidad, String tipo, float precio, Boolean ocupada, Cama cama, String tipo, Boolean balcon, Boolean cocina, Boolean vista, String fechaEntrada, String fechaSalida) {
-    this.id = id;
-    this.ubicacion = ubicacion;
-    this.capacidad = capacidad;
-    this.tipo = tipo;
-    this.precio = precio;
-    this.ocupada = ocupada;
-    this.cama = cama;
-    this.tipo = tipo;
-    this.balcon = balcon;
-    this.cocina = cocina;
-    this.vista = vista;
-    this.fechaEntrada = fechaEntrada;
-    this.fechaSalida = fechaSalida;
 
-}
-public float getPrecio() {
-    return precio;
-}
-public void setPrecio(float precio) {
-    this.precio = precio;
-}
-//Revisar el getter y setter de la fecha entrada y salida
+    public Habitacion(String id, String ubicacion, Integer capacidad, String tipo, float precio, Boolean ocupada, Cama cama, Boolean balcon, Boolean cocina, Boolean vista, String fechaEntrada, String fechaSalida) {
+        this.id = id;
+        this.ubicacion = ubicacion;
+        this.capacidad = capacidad;
+        this.tipo = tipo;
+        this.precio = precio;
+        this.ocupada = ocupada;
+        this.cama = cama;
+        this.tipo = tipo;
+        this.balcon = balcon;
+        this.cocina = cocina;
+        this.vista = vista;
+        this.fechaEntrada = fechaEntrada;
+        this.fechaSalida = fechaSalida;
 
-public String getId() {
-    return id;
-}
-public Boolean getOcupada() {
-    return ocupada;
-}
-public getFechaEntrada() {
-    return fechaEntrada;
-}
-private void setFechaEntrada(String fechaEntrada) {
-    this.fechaEntrada = fechaEntrada;
-}
+    }
+    public float getPrecio() {
+        return precio;
+    }
+    public void setPrecio(float precio) {
+        this.precio = precio;
+    }
+    //Revisar el getter y setter de la fecha entrada y salida
 
-public getFechaSalida() {
-    return fechaSalida;
-}
+    public String getId() {
+        return id;
+    }
+    public Boolean getOcupada() {
+        return ocupada;
+    }
+    public String getFechaEntrada() {
+        return fechaEntrada;
+    }
+    private void setFechaEntrada(String fechaEntrada) {
+        this.fechaEntrada = fechaEntrada;
+    }
 
-private void setFechaSalida(String fechaSalida) {
-    this.fechaSalida = fechaSalida;
-}
+    public String getFechaSalida() {
+        return fechaSalida;
+    }
 
-public Cama getCama() {
-    return cama;
+    private void setFechaSalida(String fechaSalida) {
+        this.fechaSalida = fechaSalida;
+    }
+
+    public Cama getCama() {
+        return cama;
+    }
+
 }

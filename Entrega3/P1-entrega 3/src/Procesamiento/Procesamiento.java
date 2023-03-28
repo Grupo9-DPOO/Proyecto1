@@ -1,11 +1,20 @@
 package Procesamiento;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import Modelo.Habitacion;
+import Modelo.Producto;
+
+
 public class Procesamiento {
 
     public static ArrayList<Habitacion> cargar_habitacion() throws FileNotFoundException, IOException
 	{
 		
-		ArrayList<Habitacion> habitacion = new ArrayList<>();
+		ArrayList<Habitacion> habitaciones = new ArrayList<>();
 		
 		// Abrir el archivo y leerlo línea por línea usando un BufferedReader
 		BufferedReader br = new BufferedReader(new FileReader("data/menu.txt"));
@@ -20,7 +29,7 @@ public class Procesamiento {
 				
 				Habitacion habitacion = new Habitacion(partes[0], partes[1], partes[2], partes[3], partes[4], partes[5], partes[6]);
 				
-				habitacion.add(Habitacion);
+				habitaciones.add(habitacion);
 				
 				
 		
@@ -28,13 +37,13 @@ public class Procesamiento {
 			linea = br.readLine(); // Leer la siguiente línea
 	        }
 		br.close();
-		return habitacion;
+		return habitaciones;
         }
 
     public static ArrayList<Producto> cargar_productos() throws FileNotFoundException, IOException
 	{
 		
-		ArrayList<Producto> producto = new ArrayList<>();
+		ArrayList<Producto> productos = new ArrayList<>();
 		
 		// Abrir el archivo y leerlo línea por línea usando un BufferedReader
 		BufferedReader br = new BufferedReader(new FileReader("data/menu.txt"));
@@ -49,7 +58,7 @@ public class Procesamiento {
 				
 				Producto producto = new Producto(partes[0], partes[1]);
 				
-				producto.add(Producto);
+				productos.add(producto);
 				
 				
 		
@@ -57,7 +66,7 @@ public class Procesamiento {
 			linea = br.readLine(); // Leer la siguiente línea
 	        }
 		br.close();
-		return producto;
+		return productos;
         }
 
 }

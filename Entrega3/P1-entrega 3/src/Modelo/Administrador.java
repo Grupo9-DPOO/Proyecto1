@@ -11,7 +11,10 @@ public class Administrador{
     private String password;
     private ArrayList<Habitacion> habitaciones = new ArrayList<>();
     private ArrayList<Producto> productos = new ArrayList<>();
-
+    private ArrayList<Habitacion> habitacionesVacias = new ArrayList<>();
+    private ArrayList<Habitacion> habitacionesOcupadas = new ArrayList<>();
+    private ArrayList<Servicio> servicios = new ArrayList<>();
+    
     public Administrador(String nombre, String login, String password) {
         this.nombre = nombre;
         this.login = login;
@@ -38,6 +41,7 @@ public class Administrador{
         }
     }
 
+
     public void modificarHabitacion(String habitacionId, Habitacion habitacionModificada) {
         for (int i = 0; i < habitaciones.size(); i++) {
             if (habitaciones.get(i).getId() == habitacionId) {
@@ -47,7 +51,8 @@ public class Administrador{
         }
     }
 
-    public void agregarProductos(Producto producto) {
+    public void agregarProducto(String nombre, float precio, String horas) {
+        Producto producto = new Producto(nombre, precio, horas);
         productos.add(producto);
     }
 
@@ -55,6 +60,14 @@ public class Administrador{
         for (int i = 0; i < productos.size(); i++) {
             if (productos.get(i).getNombre() == productoId) {
                 productos.set(i, productoModificado);
+                break;
+            }
+        }
+    }
+    public void modificarTarifaServicio(String nombre, float precio){
+        for (Servicio servicio : servicios) {
+            if (servicio.getNombre() == nombre) {
+                servicio.setPrecio(precio);
                 break;
             }
         }

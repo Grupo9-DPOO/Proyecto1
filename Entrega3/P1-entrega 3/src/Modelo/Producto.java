@@ -3,11 +3,13 @@ package Modelo;
 public class Producto {
     private String nombre;
     private float precio;
+    private String horas;
 
 
-    public Producto(String nombre, float precio) {
+    public Producto(String nombre, float precio, String horas) {
         this.nombre = nombre;
         this.precio = precio;
+        this.horas = horas;
     }
 
     public String getNombre() {
@@ -21,6 +23,12 @@ public class Producto {
     }
     private void setPrecio(float precio) {
         this.precio = precio;
+    }
+    public String getHoras() {
+        return horas;
+    }
+    private void setHoras(String horas) {
+        this.horas = horas;
     }
 
 }

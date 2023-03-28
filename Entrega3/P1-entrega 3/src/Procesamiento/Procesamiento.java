@@ -17,7 +17,7 @@ public class Procesamiento {
 		ArrayList<Habitacion> habitaciones = new ArrayList<>();
 		
 		// Abrir el archivo y leerlo línea por línea usando un BufferedReader
-		BufferedReader br = new BufferedReader(new FileReader("data/menu.txt"));
+		BufferedReader br = new BufferedReader(new FileReader("habitaciones.txt"));
 		String linea = br.readLine(); // La primera línea del archivo se ignora porque únicamente tiene los títulos de
 									// las columnas
 			linea = br.readLine();
@@ -46,7 +46,7 @@ public class Procesamiento {
 		ArrayList<Producto> productos = new ArrayList<>();
 		
 		// Abrir el archivo y leerlo línea por línea usando un BufferedReader
-		BufferedReader br = new BufferedReader(new FileReader("data/menu.txt"));
+		BufferedReader br = new BufferedReader(new FileReader("menuRestaurante.txt"));
 		String linea = br.readLine(); // La primera línea del archivo se ignora porque únicamente tiene los títulos de
 									// las columnas
 			linea = br.readLine();

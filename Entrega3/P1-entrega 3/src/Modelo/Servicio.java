@@ -30,4 +30,26 @@ public class Servicio {
     public void registrarPagosHechos(float cantidad) {
         this.totalPagado += cantidad;
     }
+    
+    // Getters y setters
+    public float getPrecio() {
+        return precio;
+    }
+    public void setPrecio(float precio) {
+        this.precio = precio;
+    }
+    public String getNombre() {
+        return nombre;
+    }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    public boolean isIndividual() {
+        return individual;
+    }
+    public void setIndividual(boolean individual) {
+        this.individual = individual;
+    }
 }
+
+

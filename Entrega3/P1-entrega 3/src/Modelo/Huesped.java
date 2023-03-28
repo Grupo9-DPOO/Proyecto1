@@ -1,5 +1,6 @@
 package Modelo;
 
-public class Servicio {
+public class Huesped {
     
 }
+

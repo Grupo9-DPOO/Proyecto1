@@ -36,8 +36,8 @@ public class Administrador{
 
     public void consultarInventario() {
         System.out.println("Inventario de habitaciones:");
-        for (Habitacion habitacion : habitaciones) {
-            System.out.println(habitacion);
+        for (int i= 0 ; i < habitaciones.size(); i++) {
+            System.out.println(habitaciones.get(i).getId());
         }
     }
 

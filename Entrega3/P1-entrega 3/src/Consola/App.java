@@ -128,35 +128,36 @@ public class App {
         System.out.println("Habitacion modificada con exito!!!");
     }
     private void modificarPrecioHabitacion(){
-        System.out.println("Por favor ingrese el numero de la habitacion");
+        //System.out.println("Por favor ingrese el numero de la habitacion");
         String numero = input("Por favor ingrese el numero de la habitacion \n");
-        System.out.println("Por favor ingrese el nuevo precio de la habitacion");
+        //System.out.println("Por favor ingrese el nuevo precio de la habitacion");
         float precio = Float.parseFloat(input("Por favor ingrese el nuevo precio de la habitacion \n"));
         hotel.modificarPrecioHabitacion(numero, precio); 
     }
+    
     private void crearHabitacion(){
-        System.out.println("Por favor ingrese el numero de la habitacion");
+        //System.out.println("Por favor ingrese el numero de la habitacion");
         String id = input("Por favor ingrese el numero de la habitacion \n");
-        System.out.println("Por favor ingrese la ubicacion de la habitacion");
+        //System.out.println("Por favor ingrese la ubicacion de la habitacion");
         String ubicacion = input("Por favor ingrese la ubicacion de la habitacion \n");
-        System.out.println("Por favor ingrese la capacidad de la habitacion");
+        //System.out.println("Por favor ingrese la capacidad de la habitacion");
         int capacidad = Integer.parseInt(input("Por favor ingrese la capacidad de la habitacion \n"));
-        System.out.println("Por favor ingrese el tipo de la habitacion");
+        //System.out.println("Por favor ingrese el tipo de la habitacion");
         String tipo = input("Por favor ingrese el tipo de la habitacion \n");
-        System.out.println("Por favor ingrese el precio de la habitacion");
+        //System.out.println("Por favor ingrese el precio de la habitacion");
         float precio = Float.parseFloat(input("Por favor ingrese el precio de la habitacion \n"));
         Boolean ocupada = false;
-        System.out.println("Por favor ingrese el tamaño de la cama");
+        //System.out.println("Por favor ingrese el tamaño de la cama");
         float tamanoCama = Float.parseFloat(input("Por favor ingrese el tamaño de la cama \n"));
-        System.out.println("Por favor ingrese la capacidad de la cama");
+        //System.out.println("Por favor ingrese la capacidad de la cama");
         int capacidadCama = Integer.parseInt(input("Por favor ingrese la capacidad de la cama \n"));
-        System.out.println("¿ Es cama para niños?");
+        //System.out.println("¿ Es cama para niños?");
         Boolean camaNinos = Boolean.parseBoolean(input("¿ Es cama para niños? 1 en caso de que si, 0 en caso de que no \n"));
-        System.out.println("Por favor ingrese si tiene balcon");
+        //System.out.println("Por favor ingrese si tiene balcon");
         Boolean balcon = Boolean.parseBoolean(input("Por favor ingrese si tiene balcon 1 en caso de que si, 0 en caso de que no \n"));
-        System.out.println("Por favor ingrese si tiene vista");
+        //System.out.println("Por favor ingrese si tiene vista");
         Boolean vista = Boolean.parseBoolean(input("Por favor ingrese si tiene vista 1 en caso de que si, 0 en caso de que no \n"));
-        System.out.println("Por favor ingrese si tiene cocina");
+        //System.out.println("Por favor ingrese si tiene cocina");
         Boolean cocina = Boolean.parseBoolean(input("Por favor ingrese si tiene cocina 1 en caso de que si, 0 en caso de que no \n"));
         String fechaEntrada = null;
         String fechaSalida = null;
@@ -165,18 +166,18 @@ public class App {
     }
 
     private void agregarProducto(){
-        System.out.println("Por favor ingrese el nombre del producto");
+        //System.out.println("Por favor ingrese el nombre del producto");
         String nombre = input("Por favor ingrese el nombre del producto \n");
-        System.out.println("Por favor ingrese el precio del producto");
+        //System.out.println("Por favor ingrese el precio del producto");
         float precio = Float.parseFloat(input("Por favor ingrese el precio del producto \n"));
-        System.out.println("Por favor ingrese las horas disponibles del producto");
+        //System.out.println("Por favor ingrese las horas disponibles del producto");
         String horas = input("Por favor ingrese las horas disponibles del producto \n");
         hotel.agregarProducto(nombre, precio, horas);
     }
     private void modificarTarifaServicio(){
-        System.out.println("Por favor ingrese el nombre del servicio");
+        //System.out.println("Por favor ingrese el nombre del servicio");
         String nombre = input("Por favor ingrese el nombre del servicio \n");
-        System.out.println("Por favor ingrese el nuevo precio del servicio");
+        //System.out.println("Por favor ingrese el nuevo precio del servicio");
         float precio = Float.parseFloat(input("Por favor ingrese el nuevo precio del servicio \n"));
         hotel.modificarTarifaServicio(nombre, precio);
     }
@@ -201,7 +202,7 @@ public class App {
         String fechaSalida = input("Fecha de salida");
         System.out.println("Por facor ingrese el tipo de habitacion que desea");
         String tipoHabitacion = input("Tipo de habitacion");
-        
+
     }
 
 

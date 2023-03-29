@@ -27,7 +27,7 @@ public class Procesamiento {
 				String[] partes = linea.split(";");
 				
 				
-				Habitacion habitacion = new Habitacion(partes[0], partes[1], partes[2], partes[3], partes[4], partes[5], partes[6]);
+				Habitacion habitacion = new Habitacion(partes[0], partes[1], Integer.parseInt(partes[2]), partes[3], Float.parseFloat(partes[4]), Boolean.parseBoolean(partes[5]), Boolean.parseBoolean(partes[6]));
 				
 				habitaciones.add(habitacion);
 				

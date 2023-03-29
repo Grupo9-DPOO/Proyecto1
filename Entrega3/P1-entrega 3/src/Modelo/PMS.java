@@ -38,11 +38,13 @@ public class PMS {
         administrador.modificarPrecioHabitacion(numero, precio);
     }
 
-    public Habitacion crearHabitacion(String id, String ubicacion,Integer capacidad, String tipo, float precio, Boolean ocupada, float tamagnoCama, int capacidadCama, Boolean camaNiños, Boolean balcon, Boolean cocina, Boolean vista, String fechaEntrada, String fechaSalida){
+    public void crearHabitacion(String id, String ubicacion,Integer capacidad, String tipo, float precio, Boolean ocupada, float tamagnoCama, int capacidadCama, Boolean camaNiños, Boolean balcon, Boolean cocina, Boolean vista, String fechaEntrada, String fechaSalida){
         Cama cama = new Cama(tamagnoCama, capacidadCama, camaNiños);
         Habitacion habitacion = new Habitacion(id, ubicacion, capacidad, tipo, precio, ocupada, cama, balcon, cocina, vista, fechaEntrada, fechaSalida);
-        return habitacion;
+        administrador.agregarHabitacion(habitacion);
+        //habitaciones.add(habitacion);
     }
+
     public void consultarInventario(){
         administrador.consultarInventario();
     }

@@ -1,5 +1,7 @@
 package Modelo;
 
+import java.util.ArrayList;
+
 public class Habitacion {
 
     private String id;
@@ -8,7 +10,7 @@ public class Habitacion {
     private String tipo;
     private float precio;
     private Boolean ocupada;
-    private Cama cama;
+    private ArrayList<Cama> camas;
     private Boolean balcon;
     private Boolean cocina;
     private Boolean vista;
@@ -23,7 +25,9 @@ public class Habitacion {
         this.tipo = tipo;
         this.precio = precio;
         this.ocupada = ocupada;
-        this.cama = cama;
+        this.camas = new ArrayList<>();
+        camas.add(cama);
+        //camas.add(cama);
         this.tipo = tipo;
         this.balcon = balcon;
         this.cocina = cocina;
@@ -62,7 +66,24 @@ public class Habitacion {
     }
 
     public Cama getCama() {
-        return cama;
+        return camas.get(0);
     }
+    //anadir cama a la habitacion
+    public void anadirCama(Cama cama){
+        camas.add(cama);
+    }
+
+    //getter y setter de la lista camas
+    public ArrayList<Cama> getCamas() {
+        return camas;
+    }
+    public void setCamas(ArrayList<Cama> camas) {
+        this.camas = camas;
+    }
+    // getter del tipo de habitacion
+    public String getTipo() {
+        return tipo;
+    }
+
 
 }

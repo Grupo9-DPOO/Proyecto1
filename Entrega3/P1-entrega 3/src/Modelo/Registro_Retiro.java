@@ -1,4 +1,5 @@
 package Modelo;
+import java.util.*;
 
 public class Registro_Retiro {
     private String nombreHuesped;
@@ -12,8 +13,9 @@ public class Registro_Retiro {
     private int numeroMenores;
     private String fechaInicio;
     private String fechaFin;
+    private int cantidadHabitaciones;
     
-    public Registro_Retiro(String nombreHuesped, int documento, String correo, int numeroCelular, int personasEsperadas, boolean registro, boolean salida, String identificador, int numeroMenores, String fechaInicio, String fechaFin) {
+    public Registro_Retiro(String nombreHuesped, int documento, String correo, int numeroCelular, int personasEsperadas, boolean registro, boolean salida, String identificador, int numeroMenores, String fechaInicio, String fechaFin, int cantidadHabitaciones) {
         this.nombreHuesped = nombreHuesped;
         this.documento = documento;
         this.correo = correo;
@@ -25,6 +27,7 @@ public class Registro_Retiro {
         this.numeroMenores = numeroMenores;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
+        this.cantidadHabitaciones = cantidadHabitaciones;
     }
     
     public void generarRegistro() {
@@ -37,7 +40,7 @@ public class Registro_Retiro {
     
     public String getId() {
         
-        return "";
+        return identificador;
     }
     
     public float getFactura() {

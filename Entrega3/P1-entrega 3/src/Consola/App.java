@@ -197,7 +197,7 @@ public class App {
         Integer numHabitaciones = Integer.parseInt(input("Ingrese el numero de habitaciones que desea reservar"));
         
         for (int i = 1; i <= numHabitaciones; i++) {
-            
+
             System.out.println("Por favor ingrese la cantidad de personas para la habitacioón");
             int cantidadPersonas = Integer.parseInt(input("Cantidad de personas"));
             System.out.println("Por favor ingrese la fecha de entrada");
@@ -207,7 +207,8 @@ public class App {
             System.out.println("Por facor ingrese el tipo de habitacion que desea");
             String tipoHabitacion = input("Tipo de habitacion: suite, suite doble o estandard");
             Integer numMenores = Integer.parseInt(input("Ingrese el numero de menores de edad"));
-            hotel.realizarReserva(nombre, documento, correo, numeroCel, cantidadPersonas, fechaEntrada, fechaSalida, tipoHabitacion, numMenores);
+
+            hotel.realizarReserva(nombre, documento, correo, numeroCel, cantidadPersonas, fechaEntrada, fechaSalida, tipoHabitacion, numMenores, numHabitaciones);
             }
 
     }

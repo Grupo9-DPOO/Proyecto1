@@ -5,12 +5,14 @@ import java.util.ArrayList;
 public class PMS {
     
     private ArrayList<Habitacion> habitaciones = new ArrayList<>();
+    private ArrayList<Servicio> servicios = new ArrayList<>();
+    private ArrayList<Producto> productos = new ArrayList<>();
     private ArrayList<Administrador> administradores = new ArrayList<>();
     private ArrayList<Empleado> empleados = new ArrayList<>();
     private ArrayList<Recepcionista> recepcionistas = new ArrayList<>();
     private ArrayList<Huesped> huespedes = new ArrayList<>();
-    private Administrador administrador = new Administrador("678", "345", "123");
-    private Recepcionista recepcionista = new Recepcionista("123", "456", "789");
+    private Administrador administrador = new Administrador("678", "345", "123", this);
+    private Recepcionista recepcionista = new Recepcionista("123", "456", "789", this);
 
     public Huesped crearHuesped(String nombre, Integer documento, Integer numeroCel, String correo){
         Huesped huesped = new Huesped(nombre, documento, numeroCel, correo);
@@ -18,10 +20,11 @@ public class PMS {
         return huesped;
     }
     public Administrador crearAdministrador(String nombre, String login, String password){
-        Administrador administrador = new Administrador(nombre, login, password);
+        Administrador administrador = new Administrador(nombre, login, password, this);
         administradores.add(administrador);
         return administrador;
     }
+    
             
     //public Empleado crearEmpleado(String nombre, String login, String password){
       //  Empleado empleado = new Empleado(nombre, login, password);
@@ -55,13 +58,39 @@ public class PMS {
     public void modificarTarifaServicio(String nombre, float precio){
         administrador.modificarTarifaServicio(nombre, precio);
     }
-
-    //Huesped
-    public void realizarReserva(String nombre, int documento, String email, int celular ,int totalPersonas, String fechaInicio, String fechaFin, String tipoHabitacion, int numeroMenores) {
-        Huesped huesped = new Huesped(nombre, documento, celular, email);
-        recepcionista.realizarReserva(nombre, documento, email, celular , totalPersonas, fechaInicio, fechaFin, tipoHabitacion, numeroMenores);
+    public void anadirCamas(String idRegistro, int cantidadHabitaciones, int totalPersonas){
+        administrador.anadirCamas(idRegistro, cantidadHabitaciones, totalPersonas);
     }
 
+    //Huesped
+    public void realizarReserva(String nombre, int documento, String email, int celular ,int totalPersonas, String fechaInicio, String fechaFin, String tipoHabitacion, int numeroMenores, int cantidadHabitaciones) {
+        Huesped huesped = new Huesped(nombre, documento, celular, email);
+        recepcionista.realizarReserva(nombre, documento, email, celular , totalPersonas, fechaInicio, fechaFin, tipoHabitacion, numeroMenores, cantidadHabitaciones);
+    }
+
+    // getter y setter de la lista habitaciones
+    public ArrayList<Habitacion> getHabitaciones() {
+        return habitaciones;
+    }
+    public void setHabitaciones(ArrayList<Habitacion> habitaciones) {
+        this.habitaciones = habitaciones;
+    }
+    // getter y setter de la lista servicios
+    public ArrayList<Servicio> getServicios() {
+        return servicios;
+    }
+    public void setServicios(ArrayList<Servicio> servicios) {
+        this.servicios = servicios;
+    }
+    // getter y setter de la lista productos
+    public ArrayList<Producto> getProductos() {
+        return productos;
+    }
+    public void setProductos(ArrayList<Producto> productos) {
+        this.productos = productos;
+    }
+
+    
 
         
 }

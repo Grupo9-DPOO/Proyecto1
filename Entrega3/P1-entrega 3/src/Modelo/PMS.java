@@ -10,6 +10,7 @@ public class PMS {
     private ArrayList<Recepcionista> recepcionistas = new ArrayList<>();
     private ArrayList<Huesped> huespedes = new ArrayList<>();
     private Administrador administrador = new Administrador("678", "345", "123");
+    private Recepcionista recepcionista = new Recepcionista("123", "456", "789");
 
     public Huesped crearHuesped(String nombre, Integer documento, Integer numeroCel, String correo){
         Huesped huesped = new Huesped(nombre, documento, numeroCel, correo);
@@ -56,7 +57,10 @@ public class PMS {
     }
 
     //Huesped
-
+    public void realizarReserva(String nombre, int documento, String email, int celular ,int totalPersonas, String fechaInicio, String fechaFin, String tipoHabitacion, int numeroMenores) {
+        Huesped huesped = new Huesped(nombre, documento, celular, email);
+        recepcionista.realizarReserva(nombre, documento, email, celular , totalPersonas, fechaInicio, fechaFin, tipoHabitacion, numeroMenores);
+    }
 
 
         

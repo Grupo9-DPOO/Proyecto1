@@ -5,7 +5,10 @@ public class Recepcionista {
     
     private List<Registro_Retiro> registro_Retiro;
     private List<Habitacion> habitaciones;
-    
+    List<Habitacion> habitacionesDisponibles = new ArrayList<>();
+    private String nombre;
+    private String login;
+    private String password;
     
     public void consultarInventario() {
        
@@ -27,13 +30,15 @@ public class Recepcionista {
         
     }
     
-    public Recepcionista() {
+    public Recepcionista(String nombre, String login, String password) {
         registro_Retiro = new ArrayList<>();
         habitaciones = new ArrayList<>();
+        this.nombre = nombre;
+        this.login = login;
+        this.password = password;
     }
 
-    public boolean realizarReserva(String nombre, int documento, String email, int celular, int totalPersonas, String fechaInicio, String fechaFin, int numeroMenores) {
-        List<Habitacion> habitacionesDisponibles = new ArrayList<>();
+    public boolean realizarReserva(String nombre, int documento, String email, int celular, int totalPersonas, String fechaInicio, String fechaFin, String tipoHabitacion, int numeroMenores) {  
         for (Habitacion habitacion : habitaciones) {
             boolean disponible = true;
             for (Registro_Retiro registro : registro_Retiro) {
@@ -43,6 +48,7 @@ public class Recepcionista {
                 }   
             }
             if (disponible) {
+                
                 habitacionesDisponibles.add(habitacion);
             }
         }
@@ -55,6 +61,7 @@ public class Recepcionista {
 
         Registro_Retiro nuevoRegistro = new Registro_Retiro(nombre, documento, email, celular, totalPersonas, true, false, habitacionSeleccionada.getId(), numeroMenores, fechaInicio, fechaFin);
         registro_Retiro.add(nuevoRegistro);
+
     return true;
 
     }

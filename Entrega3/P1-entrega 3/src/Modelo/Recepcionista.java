@@ -40,23 +40,31 @@ public class Recepcionista {
         this.hotel = hotel;
     }
 
-    public boolean realizarReserva(String nombre, int documento, String email, int celular, int totalPersonas, String fechaInicio, String fechaFin, String tipoHabitacion, int numeroMenores, int cantidadHabitaciones) {  
+    public Habitacion realizarReserva(String nombre, int documento, String email, int celular, int totalPersonas, String fechaInicio, String fechaFin, String tipoHabitacion, int numeroMenores, int cantidadHabitaciones) {  
+        habitacionesDisponibles.clear();
+        
         for (int i = 0; i < hotel.getHabitaciones().size(); i++) {
             boolean disponible = true;
+
             for (Registro_Retiro registro : registro_Retiro) {
                 if (registro.habitacionOcupada(hotel.getHabitaciones().get(i).getId(), fechaInicio, fechaFin)) {
                     disponible = false;
                     break;
                 }   
             }
-            if (disponible || hotel.getHabitaciones().get(i).getTipo().equals(tipoHabitacion)) {
 
-                habitacionesDisponibles.add(hotel.getHabitaciones().get(i));
-            }
+            Habitacion habitacionActual=hotel.getHabitaciones().get(i);
+
+            if (disponible 
+            && habitacionActual.getTipo().equals(tipoHabitacion) 
+            && habitacionActual.getCapacidad() >= totalPersonas) {
+
+                    habitacionesDisponibles.add(habitacionActual);
+                }  
         }
 
         if (habitacionesDisponibles.isEmpty()) {
-            return false; // Osea no hay habitaciones disponibles
+            return null; // Osea no hay habitaciones disponibles
         }
 
         Habitacion habitacionSeleccionada = habitacionesDisponibles.get(0);
@@ -66,14 +74,29 @@ public class Recepcionista {
         hotel.anadirCamas(idRegistro, cantidadHabitaciones, totalPersonas);
         registro_Retiro.add(nuevoRegistro);
 
-    return true;
+        return habitacionSeleccionada;
+
 
     }
     
-
-
-    public void cancelarReserva() {
-        
+    public boolean cancelarReserva(int documento, String idHabitacion) {
+        Registro_Retiro registroParaEliminar = null;
+    
+        for (Registro_Retiro registro : registro_Retiro) {
+            if (registro.getDocumento() == documento && registro.getIdentificador().equals(idHabitacion)) {
+                registroParaEliminar = registro;
+                break;
+            }
+        }
+    
+        if (registroParaEliminar != null) {
+            registro_Retiro.remove(registroParaEliminar);
+            return true;
+        } else {
+            return false;
+        }
+    
     }
 }
+    
 

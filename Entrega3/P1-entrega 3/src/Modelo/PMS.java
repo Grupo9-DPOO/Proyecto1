@@ -63,10 +63,12 @@ public class PMS {
     }
 
     //Huesped
-    public void realizarReserva(String nombre, int documento, String email, int celular ,int totalPersonas, String fechaInicio, String fechaFin, String tipoHabitacion, int numeroMenores, int cantidadHabitaciones) {
+    public Habitacion realizarReserva(String nombre, int documento, String email, int celular ,int totalPersonas, String fechaInicio, String fechaFin, String tipoHabitacion, int numeroMenores, int cantidadHabitaciones) {
         Huesped huesped = new Huesped(nombre, documento, celular, email);
-        recepcionista.realizarReserva(nombre, documento, email, celular , totalPersonas, fechaInicio, fechaFin, tipoHabitacion, numeroMenores, cantidadHabitaciones);
+        return recepcionista.realizarReserva(nombre, documento, email, celular , totalPersonas, fechaInicio, fechaFin, tipoHabitacion, numeroMenores, cantidadHabitaciones);
     }
+
+    
 
     // getter y setter de la lista habitaciones
     public ArrayList<Habitacion> getHabitaciones() {
@@ -88,11 +90,7 @@ public class PMS {
     }
     public void setProductos(ArrayList<Producto> productos) {
         this.productos = productos;
-    }
-
-    
-
-        
+    }        
 }
 
 

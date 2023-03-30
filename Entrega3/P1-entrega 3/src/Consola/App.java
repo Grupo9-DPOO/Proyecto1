@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import Modelo.PMS;
+import Modelo.Habitacion;
 
 public class App {
 
@@ -194,8 +195,11 @@ public class App {
         String correo = input("Correo electronico");
         hotel.crearHuesped(nombre, documento, numeroCel, correo);
         System.out.println("Huesped creado con exito, ahora podemos reservarle una habitacion!!!");
+        Habitacion habitacionAsignada;
         Integer numHabitaciones = Integer.parseInt(input("Ingrese el numero de habitaciones que desea reservar"));
         
+        
+
         for (int i = 1; i <= numHabitaciones; i++) {
 
             System.out.println("Por favor ingrese la cantidad de personas para la habitacioón");
@@ -208,12 +212,25 @@ public class App {
             String tipoHabitacion = input("Tipo de habitacion: suite, suite doble o estandard");
             Integer numMenores = Integer.parseInt(input("Ingrese el numero de menores de edad"));
 
+            habitacionAsignada = hotel.realizarReserva(nombre, documento, correo, numeroCel, cantidadPersonas, fechaEntrada, fechaSalida, tipoHabitacion, numMenores, numHabitaciones);
+
+            //Info de la habitación asignada
+            if(habitacionAsignada!=null){
+            System.out.println("Habitación asignada:");
+            System.out.println("Número de habitación: " + habitacionAsignada.getId());
+            System.out.println("Ubicación: " + habitacionAsignada.getUbicacion());
+            System.out.println("Capacidad: " + habitacionAsignada.getCapacidad());
+            System.out.println("Tipo de habitación: " + habitacionAsignada.getTipo());
+            System.out.println("Precio: " + habitacionAsignada.getPrecio());
+
             hotel.realizarReserva(nombre, documento, correo, numeroCel, cantidadPersonas, fechaEntrada, fechaSalida, tipoHabitacion, numMenores, numHabitaciones);
+               
+            }else{
+                System.out.println("Lo sentimos, no hay habitaciones disponibles que cumplan con los requisitos.");
+
             }
-
+        }
     }
-
-
 
 	public static void main(String[] args) throws FileNotFoundException, IOException
 	{

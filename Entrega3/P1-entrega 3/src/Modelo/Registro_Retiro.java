@@ -66,5 +66,14 @@ public class Registro_Retiro {
         }
         return false; // La habitación no está ocupada en el rango de fechas especificado
     }
+
+
+public int getDocumento() {
+    return documento;
+}
+
+public String getIdentificador() {
+    return identificador;
+}
 }
 

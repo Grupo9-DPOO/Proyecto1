@@ -84,6 +84,13 @@ public class Habitacion {
     public String getTipo() {
         return tipo;
     }
-
+    public String getUbicacion() {
+        return ubicacion;
+    }
+    
+    public Integer getCapacidad() {
+        return capacidad;
+    }
+    
 
 }

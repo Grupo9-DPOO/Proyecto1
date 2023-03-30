@@ -1,6 +1,7 @@
 package Modelo;
 
 import java.util.ArrayList;
+import java.util.*;
 
 public class Habitacion {
 
@@ -16,6 +17,10 @@ public class Habitacion {
     private Boolean vista;
     private String fechaEntrada;
     private String fechaSalida;
+    private double precioBase;
+
+    private Map<String, Double> preciosEspeciales;
+
 
 
     public Habitacion(String id, String ubicacion, Integer capacidad, String tipo, float precio, Boolean ocupada, Cama cama, Boolean balcon, Boolean cocina, Boolean vista, String fechaEntrada, String fechaSalida) {
@@ -34,6 +39,7 @@ public class Habitacion {
         this.vista = vista;
         this.fechaEntrada = fechaEntrada;
         this.fechaSalida = fechaSalida;
+        this.preciosEspeciales = new HashMap<>();
 
     }
     public float getPrecio() {
@@ -91,6 +97,20 @@ public class Habitacion {
     public Integer getCapacidad() {
         return capacidad;
     }
+    
+    public double getPrecioPorFecha(String fecha) { //Método para saber si hay un precio
+        if (preciosEspeciales.containsKey(fecha)) {//especial para una habitación en cierta fecha
+            return preciosEspeciales.get(fecha);
+        } else {
+            return precioBase;
+        }
+    }
+
+    // Añade este método en la clase Habitacion
+    public Map<String, Double> getPreciosEspeciales() {
+        return preciosEspeciales;
+}
+
     
 
 }

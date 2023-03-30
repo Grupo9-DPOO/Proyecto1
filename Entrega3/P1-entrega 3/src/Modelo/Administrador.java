@@ -117,4 +117,16 @@ public class Administrador{
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public void cambiarPrecioHabitacion(String idHabitacion, String fecha, double nuevoPrecio) {
+        Habitacion habitacion = hotel.buscarHabitacion(idHabitacion);
+        if (habitacion != null) {
+            habitacion.getPreciosEspeciales().put(fecha, nuevoPrecio);
+        } else {
+            System.out.println("Habitación no encontrada");
+        }
+    }
+    
+
+
 }

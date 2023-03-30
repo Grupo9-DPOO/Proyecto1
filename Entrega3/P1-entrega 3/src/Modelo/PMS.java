@@ -91,6 +91,18 @@ public class PMS {
     public void setProductos(ArrayList<Producto> productos) {
         this.productos = productos;
     }        
+
+    // Añade este método en la clase PMS
+public Habitacion buscarHabitacion(String idHabitacion) {
+    for (Habitacion habitacion : habitaciones) {
+        if (habitacion.getId().equals(idHabitacion)) {
+            return habitacion;
+        }
+    }
+    return null; // Si no se encuentra la habitación con el ID dado, devuelve null
+}
+
+
 }
 
 

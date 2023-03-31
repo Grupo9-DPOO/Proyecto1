@@ -1,6 +1,10 @@
 package Modelo;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import Procesamiento.Procesamiento;
 
 public class Administrador{
     
@@ -50,7 +54,7 @@ public class Administrador{
     public void consultarInventario() {
         System.out.println("Inventario de habitaciones:");
         for (int i= 0 ; i < hotel.getHabitaciones().size(); i++) {
-            System.out.println(hotel.getHabitaciones().get(i).getCamas().size());
+            System.out.println(hotel.getHabitaciones().get(i).getPrecio());
         }
     }
 
@@ -97,6 +101,14 @@ public class Administrador{
                 break;
             }
         }
+
+    public ArrayList<Habitacion> cargarHabitaciones() throws FileNotFoundException, IOException{
+        return Procesamiento.cargar_habitaciones();
+    }
+    //cargar productos
+    public ArrayList<Producto> cargarProductos() throws FileNotFoundException, IOException{
+        return Procesamiento.cargar_productos();
+    }
     
 
     public String getNombre() {

@@ -1,0 +1,18 @@
+id;ubicacion;capacidad;tipo;precio;tamanioCama;capacidadCama;camaNinios;ocupada;balcon;cocina;vista;fechaEntrada;fechaSalida;precioBase
+101;Tercer piso;2;suite doble;250.00;1.8;2;false;false;true;false;false;"";"";0.00
+102;Cuarto piso;1;estándar;150.00;1.5;1;false;false;false;true;true;"";"";0.01
+103;Quinto piso;4;suite;450.00;2.0;2;false;false;true;true;true;"";"";0.02
+104;Segundo piso;3;suite doble;300.00;1.8;2;false;false;false;true;true;"";"";0.03
+105;Primer piso;2;estándar;175.00;1.6;2;false;false;false;false;false;"";"";0.04
+106;Tercer piso;2;suite doble;250.00;1.8;2;false;false;true;false;false;"";"";0.05
+107;Cuarto piso;1;estándar;150.00;1.5;1;false;false;false;true;true;"";"";0.06
+108;Quinto piso;4;suite;450.00;2.0;2;false;false;true;true;true;"";"";0.07
+109;Segundo piso;3;suite doble;300.00;1.8;2;false;false;false;true;true;"";"";0.08
+110;Primer piso;2;estándar;175.00;1.6;2;false;false;false;false;false;"";"";0.09
+111;Tercer piso;2;suite doble;250.00;1.8;2;false;false;true;false;false;"";"";0.10
+112;Cuarto piso;1;estándar;150.00;1.5;1;false;false;false;true;true;"";"";0.11
+113;Quinto piso;4;suite;450.00;2.0;2;false;false;true;true;true;"";"";0.12
+114;Segundo piso;3;suite doble;300.00;1.8;2;false;false;false;true;true;"";"";0.13
+115;Primer piso;2;estándar;175.00;1.6;2;false;false;false;false;false;"";"";0.14
+116;Tercer piso;2;suite doble;250.00;1.8;2;false;false;true;false;false;"";"";0.15
+117;Cuarto piso;1;estándar;150.00;1.5;1;false;false;false;true;true;"";"";0.16

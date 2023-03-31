@@ -23,7 +23,7 @@ public class Habitacion {
 
 
 
-    public Habitacion(String id, String ubicacion, Integer capacidad, String tipo, float precio, Boolean ocupada, Cama cama, Boolean balcon, Boolean cocina, Boolean vista, String fechaEntrada, String fechaSalida) {
+    public Habitacion(String id, String ubicacion, Integer capacidad, String tipo, float precio, Boolean ocupada, Cama cama, Boolean balcon, Boolean cocina, Boolean vista, String fechaEntrada, String fechaSalida, double precioBase) {
         this.id = id;
         this.ubicacion = ubicacion;
         this.capacidad = capacidad;

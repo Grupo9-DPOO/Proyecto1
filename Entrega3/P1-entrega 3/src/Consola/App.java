@@ -29,13 +29,35 @@ public class App {
                  modificarPrecioHabitacion();
                }
             else if (opcion_seleccionada3 == 2){
-                crearHabitacion();
+                System.out.println("1. Agregar habitacion. ");
+                System.out.println("2. Cargar habitaciones. ");
+                int opcion_seleccionada4 = Integer.parseInt(input("Por favor seleccione una opcion \n"));
+                if (opcion_seleccionada4 == 1){
+                    crearHabitacion();
+                }
+                else if (opcion_seleccionada4 == 2){
+                    hotel.cargarHabitaciones();
+                }
+                else{
+                    System.out.println("Opcion no valida");
+                }
             }
             else if (opcion_seleccionada3 == 3){
                 hotel.consultarInventario();
             }
             else if (opcion_seleccionada3 == 4){
-                agregarProducto();
+                System.out.println("1. Agregar producto. ");
+                System.out.println("2. Cargar productos. ");
+                int opcion_seleccionada4 = Integer.parseInt(input("Por favor seleccione una opcion \n"));
+                if (opcion_seleccionada4 == 1){
+                    agregarProducto();
+                }
+                else if (opcion_seleccionada4 == 2){
+                    hotel.cargarProductos();
+                }
+                else{
+                    System.out.println("Opcion no valida");
+                }
             }
             else if (opcion_seleccionada3 == 5){
                 modificarTarifaServicio();
@@ -91,11 +113,16 @@ public class App {
 
     private void mostrarMenuAdmin(){
         System.out.println("1. Modificar el precio de una habitacion. ");
-        System.out.println("2. Agregar una habitacion. ");
+        System.out.println("2. Agregar o cargar habitaciones. ");
         System.out.println("3. Consultar el inventario de habitaciones. ");
-        System.out.println("4. Agregar productos ");
+        System.out.println("4. Agregar o cargar productos ");
         System.out.println("5. Modificar tarifa Servicio ");
     }   
+    private void mostrarMenuHuesped(){
+        System.out.println("1. Pedir algo del restaurante. ");
+        System.out.println("2. Solicitar un servicio ");
+        System.out.println("3. hacer check out. ");
+    }
 
     private void crearAdministrador(){
         System.out.println("Por favor ingrese su nombre");
@@ -162,7 +189,8 @@ public class App {
         Boolean cocina = Boolean.parseBoolean(input("Por favor ingrese si tiene cocina 1 en caso de que si, 0 en caso de que no \n"));
         String fechaEntrada = null;
         String fechaSalida = null;
-        hotel.crearHabitacion(id, ubicacion, capacidad, tipo, precio, ocupada, tamanoCama, capacidadCama, camaNinos, balcon, cocina, vista, fechaEntrada, fechaSalida);
+        float precioBase = 0;
+        hotel.crearHabitacion(id, ubicacion, capacidad, tipo, precio, ocupada, tamanoCama, capacidadCama, camaNinos, balcon, cocina, vista, fechaEntrada, fechaSalida,precioBase );
 
     }
 

@@ -1,5 +1,7 @@
 package Modelo;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class PMS {
@@ -42,9 +44,9 @@ public class PMS {
         administrador.modificarPrecioHabitacion(numero, precio);
     }
 
-    public void crearHabitacion(String id, String ubicacion,Integer capacidad, String tipo, float precio, Boolean ocupada, float tamagnoCama, int capacidadCama, Boolean camaNiños, Boolean balcon, Boolean cocina, Boolean vista, String fechaEntrada, String fechaSalida){
+    public void crearHabitacion(String id, String ubicacion,Integer capacidad, String tipo, float precio, Boolean ocupada, float tamagnoCama, int capacidadCama, Boolean camaNiños, Boolean balcon, Boolean cocina, Boolean vista, String fechaEntrada, String fechaSalida, double precioBase){
         Cama cama = new Cama(tamagnoCama, capacidadCama, camaNiños);
-        Habitacion habitacion = new Habitacion(id, ubicacion, capacidad, tipo, precio, ocupada, cama, balcon, cocina, vista, fechaEntrada, fechaSalida);
+        Habitacion habitacion = new Habitacion(id, ubicacion, capacidad, tipo, precio, ocupada, cama, balcon, cocina, vista, fechaEntrada, fechaSalida, precioBase);
         administrador.agregarHabitacion(habitacion);
         //habitaciones.add(habitacion);
     }
@@ -60,6 +62,13 @@ public class PMS {
     }
     public void anadirCamas(String idRegistro, int cantidadHabitaciones, int totalPersonas){
         administrador.anadirCamas(idRegistro, cantidadHabitaciones, totalPersonas);
+    }
+    public void cargarHabitaciones() throws FileNotFoundException, IOException{
+        this.habitaciones = administrador.cargarHabitaciones();
+    }
+    //cargar productos
+    public void cargarProductos() throws FileNotFoundException, IOException{
+        this.productos = administrador.cargarProductos();
     }
 
     //Huesped

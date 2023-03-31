@@ -1,0 +1,7 @@
+Servicio;Precio;Grupal
+Spa;50.00;false
+Masajes;70.00;false
+Excursión en bote;120.00;true
+Cena temática;35.00;false
+Servicio de habitaciones;15.00;false
+Tour de la ciudad;200.00;true

@@ -7,7 +7,7 @@ public class Servicio {
     private float totalConsumido;
     private float totalPagado;
     
-    public Servicio(float precio, String nombre, boolean individual) {
+    public Servicio(String nombre, float precio,  boolean individual) {
         this.precio = precio;
         this.nombre = nombre;
         this.individual = individual;

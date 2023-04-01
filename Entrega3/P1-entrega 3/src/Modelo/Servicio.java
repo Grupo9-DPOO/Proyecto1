@@ -1,13 +1,13 @@
 package Modelo;
 
 public class Servicio {
-    private float precio;
+    private double precio;
     private String nombre;
     private boolean individual;
-    private float totalConsumido;
-    private float totalPagado;
+    private double totalConsumido;
+    private double totalPagado;
     
-    public Servicio(String nombre, float precio,  boolean individual) {
+    public Servicio(String nombre, double precio,  boolean individual) {
         this.precio = precio;
         this.nombre = nombre;
         this.individual = individual;
@@ -15,11 +15,7 @@ public class Servicio {
         this.totalPagado = 0;
     }
     
-    public void crearServicio() {
-        
-    }
-    
-    public void registrarServiciosConsumidos(float cantidad) {
+    public void registrarServiciosConsumidos(double cantidad) {
         if (individual) {
             this.totalConsumido += cantidad;
         } else {
@@ -27,15 +23,23 @@ public class Servicio {
         }
     }
     
-    public void registrarPagosHechos(float cantidad) {
+    public void registrarPagosHechos(double cantidad) {
         this.totalPagado += cantidad;
     }
     
+    public double montoAdeudado() {
+        return totalConsumido * precio;
+    }
+    
+    public double montoRestante() {
+        return montoAdeudado() - totalPagado;
+    }
+    
     // Getters y setters
-    public float getPrecio() {
+    public double getPrecio() {
         return precio;
     }
-    public void setPrecio(float precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
     public String getNombre() {
@@ -51,5 +55,3 @@ public class Servicio {
         this.individual = individual;
     }
 }
-
-

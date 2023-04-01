@@ -2,35 +2,37 @@ package Modelo;
 
 public class Producto {
     private String nombre;
-    private float precio;
-    private String horas;
+    private double precio;
+    private boolean roomService;
 
-
-    public Producto(String nombre, float precio, String horas) {
+    public Producto(String nombre, double precio, boolean roomService) {
         this.nombre = nombre;
         this.precio = precio;
-        this.horas = horas;
+        this.roomService = roomService;
     }
 
     public String getNombre() {
         return nombre;
     }
-    private void setNombre(String nombre) {
+
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    public float getPrecio() {
+
+    public double getPrecio() {
         return precio;
     }
-    private void setPrecio(float precio) {
+
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
-    public String getHoras() {
-        return horas;
-    }
-    private void setHoras(String horas) {
-        this.horas = horas;
+
+    public boolean isRoomService() {
+        return roomService;
     }
 
+    public void setRoomService(boolean roomService) {
+        this.roomService = roomService;
+    }
 }
-
 

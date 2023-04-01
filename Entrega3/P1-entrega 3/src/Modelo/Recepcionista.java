@@ -79,7 +79,10 @@ public class Recepcionista {
 
     }
     
-    public boolean cancelarReserva(int documento, String idHabitacion) {
+    public boolean cancelarReserva(int documento, String idHabitacion, int horasTranscurridas) {
+        if(horasTranscurridas>48){
+            return false;
+        }
         Registro_Retiro registroParaEliminar = null;
     
         for (Registro_Retiro registro : registro_Retiro) {
@@ -95,7 +98,7 @@ public class Recepcionista {
         } else {
             return false;
         }
-    
+        return true;
     }
 }
     

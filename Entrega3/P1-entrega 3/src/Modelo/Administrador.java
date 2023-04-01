@@ -68,8 +68,8 @@ public class Administrador{
         }
     }
 
-    public void agregarProducto(String nombre, float precio, String horas) {
-        Producto producto = new Producto(nombre, precio, horas);
+    public void agregarProducto(String nombre, double precio, boolean roomService) {
+        Producto producto = new Producto(nombre, precio, roomService);
         hotel.getProductos().add(producto);
     }
 

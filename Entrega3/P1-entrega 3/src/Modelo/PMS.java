@@ -15,6 +15,7 @@ public class PMS {
     private ArrayList<Huesped> huespedes = new ArrayList<>();
     private Administrador administrador = new Administrador("678", "345", "123", this);
     private Recepcionista recepcionista = new Recepcionista("123", "456", "789", this);
+   
 
     public Huesped crearHuesped(String nombre, Integer documento, Integer numeroCel, String correo){
         Huesped huesped = new Huesped(nombre, documento, numeroCel, correo);
@@ -54,8 +55,8 @@ public class PMS {
     public void consultarInventario(){
         administrador.consultarInventario();
     }
-    public void agregarProducto(String nombre, float precio, String horas){
-        administrador.agregarProducto(nombre, precio, horas);
+    public void agregarProducto(String nombre, double precio, boolean roomService){
+        administrador.agregarProducto(nombre, precio, roomService);
     }
     public void modificarTarifaServicio(String nombre, float precio){
         administrador.modificarTarifaServicio(nombre, precio);
@@ -99,7 +100,9 @@ public class PMS {
     }
     public void setProductos(ArrayList<Producto> productos) {
         this.productos = productos;
-    }        
+    }  
+
+    
 
     // Añade este método en la clase PMS
 public Habitacion buscarHabitacion(String idHabitacion) {
@@ -111,6 +114,22 @@ public Habitacion buscarHabitacion(String idHabitacion) {
     return null; // Si no se encuentra la habitación con el ID dado, devuelve null
 }
 
+public void realizarCheckout(String idHabitacion) {
+    Habitacion habitacionARealizarCheckout = null;
+    for (Habitacion habitacion : habitaciones) {
+        if (habitacion.getId().equals(idHabitacion)) {
+            habitacionARealizarCheckout = habitacion;
+            break;
+        }
+    }
+    if (habitacionARealizarCheckout != null) { //Para hacer checkout de la habitacion
+        habitacionARealizarCheckout.setOcupada(false);
+        habitacionARealizarCheckout.setFechaEntrada(null);
+        habitacionARealizarCheckout.setFechaSalida(null);
+    } else {
+        System.out.println("No se encontró una habitación con el ID especificado.");
+    }
+}
 
 }
 

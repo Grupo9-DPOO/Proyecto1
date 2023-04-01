@@ -18,6 +18,7 @@ public class Habitacion {
     private String fechaEntrada;
     private String fechaSalida;
     private double precioBase;
+    private float cargosAcumulados;
 
     private Map<String, Double> preciosEspeciales;
 
@@ -40,6 +41,7 @@ public class Habitacion {
         this.fechaEntrada = fechaEntrada;
         this.fechaSalida = fechaSalida;
         this.preciosEspeciales = new HashMap<>();
+        this.cargosAcumulados=0;
 
     }
     public float getPrecio() {
@@ -59,7 +61,7 @@ public class Habitacion {
     public String getFechaEntrada() {
         return fechaEntrada;
     }
-    private void setFechaEntrada(String fechaEntrada) {
+    public void setFechaEntrada(String fechaEntrada) {
         this.fechaEntrada = fechaEntrada;
     }
 
@@ -67,7 +69,7 @@ public class Habitacion {
         return fechaSalida;
     }
 
-    private void setFechaSalida(String fechaSalida) {
+    public void setFechaSalida(String fechaSalida) {
         this.fechaSalida = fechaSalida;
     }
 
@@ -111,6 +113,16 @@ public class Habitacion {
         return preciosEspeciales;
 }
 
-    
+    public void agregarCargo(float monto) {
+        this.cargosAcumulados += monto;
+    }
 
+    public float getCargosAcumulados() {
+        return cargosAcumulados; // Para obtener cargos acumulados 
+    }
+    
+    public void setOcupada(boolean ocupada) {
+        this.ocupada = ocupada;
+
+}
 }

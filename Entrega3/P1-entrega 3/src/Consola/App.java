@@ -6,7 +6,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import Modelo.PMS;
+import Modelo.Recepcionista;
 import Modelo.Habitacion;
+import Modelo.Empleado;
 
 public class App {
 
@@ -67,16 +69,39 @@ public class App {
                 System.out.println("Opcion no valida");
             }
             }
-
             else if (opcion_seleccionada2 == 3) {
             } 
             else if (opcion_seleccionada2 == 4) {
+                mostrarMenuHuesped();
+                int opcion_seleccionada3 = Integer.parseInt(input("Por favor seleccione una opcion \n"));
+                if (opcion_seleccionada3 == 4){
+                    System.out.println("Por favor, ingrese su nombre:");
+                    String nombre = input("Nombre");
+                    System.out.println("Por favor, ingrese su documento:");
+                    int documento = Integer.parseInt(input("Documento"));
+                    System.out.println("Por favor, ingrese la fecha en que realizó la reserva (AAAA/MM/DD):");
+                    String fechaReserva = input("Fecha de reserva");
+                    System.out.println("Por favor, ingrese cuántas horas han pasado desde que realizó la reserva:");
+                    int horasDesdeReserva = Integer.parseInt(input("Horas desde la reserva"));
+                    String idHabitacion= input("Por favor ingrese el Id de su habitacion");
+                
+                    boolean cancelacionExitosa = Recepcionista.cancelarReserva(documento, idHabitacion , horasDesdeReserva);
+                
+                    if (cancelacionExitosa) {
+                        System.out.println("Reserva cancelada con éxito.");
+                    } else {
+                        System.out.println("No se pudo cancelar la reserva. Han pasado más de 48 horas desde que se realizó la reserva.");
+                    }
+                }
+
+                }
             } 
             else {
                 System.out.println("Opcion no valida");
             }
         }
-    }
+    
+    
 
 	public String input(String mensaje)
 	{
@@ -101,6 +126,7 @@ public class App {
         System.out.println("1. Si es un administrador.");
         System.out.println("2. Si es un empleado.");
         System.out.println("3. Si es un recepcionista.");
+        System.out.println("4. Si es un huesped ");
     }
 
     public void mostrarMenuHotel(){
@@ -122,6 +148,8 @@ public class App {
         System.out.println("1. Pedir algo del restaurante. ");
         System.out.println("2. Solicitar un servicio ");
         System.out.println("3. hacer check out. ");
+        System.out.println("4. Cancelar reserva.");
+
     }
 
     private void crearAdministrador(){
@@ -198,10 +226,10 @@ public class App {
         //System.out.println("Por favor ingrese el nombre del producto");
         String nombre = input("Por favor ingrese el nombre del producto \n");
         //System.out.println("Por favor ingrese el precio del producto");
-        float precio = Float.parseFloat(input("Por favor ingrese el precio del producto \n"));
+        double precio = Float.parseFloat(input("Por favor ingrese el precio del producto \n"));
         //System.out.println("Por favor ingrese las horas disponibles del producto");
-        String horas = input("Por favor ingrese las horas disponibles del producto \n");
-        hotel.agregarProducto(nombre, precio, horas);
+        boolean roomService = Boolean.parseBoolean(input(("Por favor ingrese si tiene este producto se puede llevar por room service o no \n")));
+        hotel.agregarProducto(nombre, precio, roomService);
     }
     private void modificarTarifaServicio(){
         //System.out.println("Por favor ingrese el nombre del servicio");
@@ -210,6 +238,51 @@ public class App {
         float precio = Float.parseFloat(input("Por favor ingrese el nuevo precio del servicio \n"));
         hotel.modificarTarifaServicio(nombre, precio);
     }
+
+    private void pedirProductoRestaurante() {
+        System.out.println("Por favor, ingrese el número de la habitación:");
+        String idHabitacion = input("Número de habitación");
+        System.out.println("Por favor, ingrese el nombre del producto:");
+        String nombreProducto = input("Nombre del producto");
+        System.out.println("¿Desea pagar el producto ahora (1) o agregarlo a la cuenta de la habitación (2)?");
+        int opcionPago = Integer.parseInt(input("Opción de pago"));
+    
+        float precioProducto = Empleado.pedirProductoRestaurante(idHabitacion, nombreProducto);
+    
+        if (precioProducto >= 0) {
+            System.out.println("Producto solicitado con éxito.");
+            System.out.println("Nombre del producto: " + nombreProducto);
+            System.out.println("Precio del producto: " + precioProducto);
+    
+            if (opcionPago == 1) {
+                System.out.println("El producto ha sido pagado.");
+            } else if (opcionPago == 2) {
+                System.out.println("El producto ha sido agregado a la cuenta de la habitación.");
+            } else {
+                System.out.println("Opción de pago inválida.");
+            }
+        } else {
+            System.out.println("Lo sentimos, no se pudo solicitar el producto.");
+        }
+    }
+    
+    //Esta función sirve para hacer el "check-out". Aquí está planteado para utilizar los cargos añadidos por los servicios
+    private void realizarCheckout() {
+        System.out.println("Por favor, ingrese el número de la habitación:");
+        String idHabitacion = input("Número de habitación");
+    
+        float totalCargos = hotel.realizarCheckout(idHabitacion);
+    
+        if (totalCargos >= 0) {
+            System.out.println("Check-out realizado con éxito.");
+            System.out.println("Total de cargos: " + totalCargos);
+        } else {
+            System.out.println("Lo sentimos, no se pudo realizar el check-out.");
+        }
+    }
+
+    
+    
 
     //Todo lo del huesped
     private void crearHuesped(){

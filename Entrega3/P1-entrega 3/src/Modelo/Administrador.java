@@ -16,10 +16,7 @@ public class Administrador{
     private PMS hotel;
     private ArrayList<Habitacion> habitaciones = new ArrayList<>();
     private ArrayList<Producto> productos = new ArrayList<>();
-    private ArrayList<Habitacion> habitacionesVacias = new ArrayList<>();
-    private ArrayList<Habitacion> habitacionesOcupadas = new ArrayList<>();
-    private ArrayList<Servicio> servicios = new ArrayList<>();
-    
+
     public Administrador(String nombre, String login, String password, PMS hotel) {
         this.nombre = nombre;
         this.login = login;
@@ -28,18 +25,9 @@ public class Administrador{
     }
 
     public void modificarPrecioHabitacion(String habitacionId, float nuevoPrecio) {
-        //for (Habitacion habitacion : hotel.getHabitaciones()) {
-        //    if (habitacion.getId() == habitacionId) {
-        //        habitacion.setPrecio(nuevoPrecio);
-        //        break;
-        //    }
-        //}
 
         for (int i = 0; i < hotel.getHabitaciones().size(); i++) {
-            //System.out.println(hotel.getHabitaciones().get(i).getId() instanceof String);
-            //System.out.println(habitacionId instanceof String);
-            //Boolean bandera = hotel.getHabitaciones().get(i).getId() == habitacionId;
-            //System.out.println(bandera);
+
             if (hotel.getHabitaciones().get(i).getId().equals(habitacionId)) {
                 hotel.getHabitaciones().get(i).setPrecio(nuevoPrecio);
                 break;
@@ -54,7 +42,12 @@ public class Administrador{
     public void consultarInventario() {
         System.out.println("Inventario de habitaciones:");
         for (int i= 0 ; i < hotel.getHabitaciones().size(); i++) {
-            System.out.println(hotel.getHabitaciones().get(i).getPrecio());
+            //mostrar informacion de la habitacion
+            System.out.println("Habitacion " + hotel.getHabitaciones().get(i).getId());
+            System.out.println("Tipo: " + hotel.getHabitaciones().get(i).getTipo());
+            System.out.println("Capacidad: " + hotel.getHabitaciones().get(i).getCapacidad());
+            System.out.println("Precio: " + hotel.getHabitaciones().get(i).getPrecio());
+            System.out.println("Estado: " + hotel.getHabitaciones().get(i).getOcupada());
         }
     }
 
@@ -108,6 +101,10 @@ public class Administrador{
     //cargar productos
     public ArrayList<Producto> cargarProductos() throws FileNotFoundException, IOException{
         return Procesamiento.cargar_productos();
+    }
+    //cargar servicios
+    public ArrayList<Servicio> cargarServicios() throws FileNotFoundException, IOException{
+        return Procesamiento.cargar_servicios();
     }
     
 

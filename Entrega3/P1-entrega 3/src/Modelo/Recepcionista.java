@@ -10,10 +10,7 @@ public class Recepcionista {
     private String login;
     private String password;
     private PMS hotel;
-    
-    public void consultarInventario() {
-       
-    }
+
     
     public void registrarLlegada() {
         
@@ -40,9 +37,8 @@ public class Recepcionista {
         this.hotel = hotel;
     }
 
-    public Habitacion realizarReserva(String nombre, int documento, String email, int celular, int totalPersonas, String fechaInicio, String fechaFin, String tipoHabitacion, int numeroMenores, int cantidadHabitaciones) {  
+    public Habitacion realizarReserva(Huesped huesped, int totalPersonas, String fechaInicio, String fechaFin, String tipoHabitacion, int numeroMenores, int cantidadHabitaciones) {  
         habitacionesDisponibles.clear();
-        
         for (int i = 0; i < hotel.getHabitaciones().size(); i++) {
             boolean disponible = true;
 
@@ -69,7 +65,7 @@ public class Recepcionista {
 
         Habitacion habitacionSeleccionada = habitacionesDisponibles.get(0);
 
-        Registro_Retiro nuevoRegistro = new Registro_Retiro(nombre, documento, email, celular, totalPersonas, true, false, habitacionSeleccionada.getId(), numeroMenores, fechaInicio, fechaFin, cantidadHabitaciones);
+        Registro_Retiro nuevoRegistro = new Registro_Retiro(huesped, totalPersonas, true, false, habitacionSeleccionada.getId(), numeroMenores, fechaInicio, fechaFin, cantidadHabitaciones);
         String idRegistro = nuevoRegistro.getId();
         hotel.anadirCamas(idRegistro, cantidadHabitaciones, totalPersonas);
         registro_Retiro.add(nuevoRegistro);
@@ -98,8 +94,40 @@ public class Recepcionista {
         } else {
             return false;
         }
-        return true;
     }
-}
+
+    public float realizarCheckout(String idHabitacion){
+        float totalCargos = 0;
+        for (int i = 0; i < hotel.getHabitaciones().size(); i ++){
+            if (hotel.getHabitaciones().get(i).getId().equals(idHabitacion)){
+                for (int j = 0; j < hotel.getHabitaciones().get(i).getConsumos().size(); j++){
+                    totalCargos += hotel.getHabitaciones().get(i).getConsumos().get(j).getPrecio();
+                }
+
+            }
+        }
+        return totalCargos;
+    }
+
+
+    public HashMap<String,String> consultarInventario(){
+        HashMap<String,String> datos = new HashMap<>();
+        for (int i = 0; i < hotel.getHabitaciones().size(); i++){
+            // recorrer registros 
+            for (int j = 0; j < registro_Retiro.size(); j++){
+                if (registro_Retiro.get(j).getIdentificador().equals(hotel.getHabitaciones().get(i).getId())){
+                    nombre = registro_Retiro.get(j).getNombreHuesped();
+                    datos.put(hotel.getHabitaciones().get(i).getId(), nombre);
+                }
+                else {
+                    datos.put(hotel.getHabitaciones().get(i).getId(), "No hay huespedes");
+                }
+            }
+            
+        }
+        return datos;
+    }
+    }
+
     
 

@@ -1,7 +1,8 @@
 package Modelo;
 
 public class Consumo {
-    private float precio;
+    private String nombre;
+    private double precio;
     private String fecha;
     private String habitacion;
     private boolean tipoPago;
@@ -9,14 +10,15 @@ public class Consumo {
     public Consumo() {
     }
 
-    public Consumo(float precio, String fecha, String habitacion, boolean tipoPago) {
+    public Consumo(double precio, String fecha, String habitacion, boolean tipoPago, String nombre) {
         this.precio = precio;
         this.fecha = fecha;
         this.habitacion = habitacion;
         this.tipoPago = tipoPago;
+        this.nombre = nombre;
     }
 
-    public float getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
@@ -46,6 +48,10 @@ public class Consumo {
 
     public void setTipoPago(boolean tipoPago) {
         this.tipoPago = tipoPago;
+    }
+    //getter de nombre
+    public String getNombre() {
+        return nombre;
     }
 }
 

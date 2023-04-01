@@ -58,7 +58,7 @@ public class Procesamiento {
 				String[] partes = linea.split(";");
 				
 				
-				Producto producto = new Producto(partes[0], Float.parseFloat(partes[1]), partes[2]);
+				Producto producto = new Producto(partes[0], Double.parseDouble(partes[1]), Boolean.parseBoolean(partes[2]));
 				
 				productos.add(producto);
 				

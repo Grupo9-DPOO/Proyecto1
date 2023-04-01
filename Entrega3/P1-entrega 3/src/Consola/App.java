@@ -4,78 +4,114 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
 
 import Modelo.PMS;
-import Modelo.Recepcionista;
 import Modelo.Habitacion;
-import Modelo.Empleado;
+
 
 public class App {
 
     private PMS hotel = new PMS();
-    private Recepcionista recepcionista = new Recepcionista();
 
     public void ejecutarAplicacion() throws FileNotFoundException, IOException {
 	    boolean continuar = true;
         while (continuar)
 		{
-
         mostrarMenuHotel();
-        int opcion_seleccionada2 = Integer.parseInt(input("Por favor seleccione una opcion \n"));
-        if (opcion_seleccionada2 == 1) {
+        int opciones_hotel = Integer.parseInt(input("Por favor seleccione una opcion \n"));
+        //Crear y asignar al huesped
+        if (opciones_hotel == 1) {
             crearHuesped();
-        } 
-        else if (opcion_seleccionada2 == 2) {
+        }
+
+        //Opciones que puede escoger el huesped
+        else if (opciones_hotel == 5) {
+            mostrarMenuHuesped();
+            int opciones_huesped = Integer.parseInt(input("Por favor seleccione una opcion \n"));
+            if (opciones_huesped == 1){
+                pedirProductoRestaurante();
+            }
+            else if (opciones_huesped == 2){
+                solicitarServicio();
+            }
+            else if (opciones_huesped == 3){
+                realizarCheckout();
+            }
+            else{
+                System.out.println("Opcion no valida");
+            }
+        }   
+
+        //Funcionalidades del administrador
+        else if (opciones_hotel == 2) {
             mostrarMenuAdmin();
-            int opcion_seleccionada3 = Integer.parseInt(input("Por favor seleccione una opcion \n"));
-            if (opcion_seleccionada3 == 1){
+            int opciones_admin = Integer.parseInt(input("Por favor seleccione una opcion \n"));
+            //Modificar precios habitaciones
+            if (opciones_admin == 1){
                  modificarPrecioHabitacion();
-               }
-            else if (opcion_seleccionada3 == 2){
+            }
+            //Cargar y agragar habitaciones
+            else if (opciones_admin == 2){
                 System.out.println("1. Agregar habitacion. ");
                 System.out.println("2. Cargar habitaciones. ");
-                int opcion_seleccionada4 = Integer.parseInt(input("Por favor seleccione una opcion \n"));
-                if (opcion_seleccionada4 == 1){
+                int carga = Integer.parseInt(input("Por favor seleccione una opcion \n"));
+                if (carga == 1){
                     crearHabitacion();
                 }
-                else if (opcion_seleccionada4 == 2){
+                else if (carga == 2){
                     hotel.cargarHabitaciones();
+                    hotel.cargarServicios();
                 }
                 else{
                     System.out.println("Opcion no valida");
                 }
             }
-            else if (opcion_seleccionada3 == 3){
+            //Consultar inventario
+            else if (opciones_admin == 3){
                 hotel.consultarInventario();
             }
-            else if (opcion_seleccionada3 == 4){
+            //Cargar y agregar productos
+            else if (opciones_admin == 4){
                 System.out.println("1. Agregar producto. ");
                 System.out.println("2. Cargar productos. ");
-                int opcion_seleccionada4 = Integer.parseInt(input("Por favor seleccione una opcion \n"));
-                if (opcion_seleccionada4 == 1){
+                int carga_prod = Integer.parseInt(input("Por favor seleccione una opcion \n"));
+                //Crear prod
+                if (carga_prod == 1){
                     agregarProducto();
                 }
-                else if (opcion_seleccionada4 == 2){
+                //Cargar prod
+                else if (carga_prod == 2){
                     hotel.cargarProductos();
                 }
                 else{
                     System.out.println("Opcion no valida");
                 }
             }
-            else if (opcion_seleccionada3 == 5){
+            //Modificar tarifa servicio
+            else if (opciones_admin == 5){
                 modificarTarifaServicio();
             }
 
             else{
                 System.out.println("Opcion no valida");
             }
+        }
+
+        //Funcionalidades del empleado
+            else if (opciones_hotel == 3) {
+                mostrarMenuEmpleado();
+                HashMap<String, String> datos = hotel.consultarConsumos();
+                for (String key : datos.keySet()) {
+                    System.out.println(" El consumo de la habitacion " + key + "es: " + datos.get(key));
+                }
             }
-            else if (opcion_seleccionada2 == 3) {
-            } 
-            else if (opcion_seleccionada2 == 4) {
+
+            //Opciones huesped
+            else if (opciones_hotel == 5) {
                 mostrarMenuHuesped();
-                int opcion_seleccionada3 = Integer.parseInt(input("Por favor seleccione una opcion \n"));
-                if (opcion_seleccionada3 == 4){
+                int opciones_huesped = Integer.parseInt(input("Por favor seleccione una opcion \n"));
+                if (opciones_huesped == 4){
                     System.out.println("Por favor, ingrese su nombre:");
                     String nombre = input("Nombre");
                     System.out.println("Por favor, ingrese su documento:");
@@ -85,22 +121,32 @@ public class App {
                     System.out.println("Por favor, ingrese cuántas horas han pasado desde que realizó la reserva:");
                     int horasDesdeReserva = Integer.parseInt(input("Horas desde la reserva"));
                     String idHabitacion= input("Por favor ingrese el Id de su habitacion");
-                
-                    boolean cancelacionExitosa = Recepcionista.cancelarReserva(documento, idHabitacion , horasDesdeReserva);
+                    boolean cancelacionExitosa = hotel.cancelarReserva(documento, idHabitacion, horasDesdeReserva);
                 
                     if (cancelacionExitosa) {
                         System.out.println("Reserva cancelada con éxito.");
-                    } else {
+                    } 
+                    else {
                         System.out.println("No se pudo cancelar la reserva. Han pasado más de 48 horas desde que se realizó la reserva.");
                     }
                 }
 
                 }
-            } 
-            else {
-                System.out.println("Opcion no valida");
+            //Funcionalidades del recepcionista
+            else if (opciones_hotel == 4) {
+                mostrarMenuRecepcionista();
+                int recepcion = Integer.parseInt(input("Por favor seleccione una opcion \n"));
+                if (recepcion ==1){
+                    HashMap<String, String> datos = hotel.consultarInventarioRecepcionista();
+                    System.out.println("El inventario actual es: ");
+                    for (String key : datos.keySet()) {
+                        System.out.println(key + " : " + datos.get(key));
+                    }
+                }
             }
+
         }
+    }    
     
     
 
@@ -136,6 +182,7 @@ public class App {
         System.out.println("2. Si es un administrador.");
         System.out.println("3. Si es un empleado.");
         System.out.println("4. Si es un recepcionista.");
+        System.out.println("5. Solicitar un servicio.");
     }
 
     private void mostrarMenuAdmin(){
@@ -150,30 +197,14 @@ public class App {
         System.out.println("2. Solicitar un servicio ");
         System.out.println("3. hacer check out. ");
         System.out.println("4. Cancelar reserva.");
+    }
+    private void mostrarMenuRecepcionista(){
+        System.out.println("1. Consultar habitaciones. ");
 
     }
+    private void mostrarMenuEmpleado(){
+        System.out.println("1. Consultar cosumos de una habitacion. ");
 
-    private void crearAdministrador(){
-        System.out.println("Por favor ingrese su nombre");
-        String nombre = input("Nombre");
-        System.out.println("Por favor ingrese su login");
-        String login = input("Login");
-        System.out.println("Por favor ingrese su password");
-        String password = input("Password");
-        //hotel.crearAdministrador(nombre, login, password);
-        System.out.println("Administrador creado con exito, ahora puede gestionar el hotel!!!");
-    }
-
-    
-    private void crearEmpleado(){
-        System.out.println("Por favor ingrese su nombre");
-        String nombre = input("Nombre");
-        System.out.println("Por favor ingrese su login");
-        String login = input("Login");
-        System.out.println("Por favor ingrese su password");
-        String password = input("Password");
-        //hotel.crearEmpleado(nombre, login, password);
-        System.out.println("Empleado creado con exito, ahora puede registrar consumos!!!");
     }
     //Modificaciones que hace el administrador
     private void modificarHabitacion(){
@@ -184,6 +215,7 @@ public class App {
         //hotel.modificarHabitacion(numero, precio);
         System.out.println("Habitacion modificada con exito!!!");
     }
+
     private void modificarPrecioHabitacion(){
         //System.out.println("Por favor ingrese el numero de la habitacion");
         String numero = input("Por favor ingrese el numero de la habitacion \n");
@@ -243,27 +275,47 @@ public class App {
     private void pedirProductoRestaurante() {
         System.out.println("Por favor, ingrese el número de la habitación:");
         String idHabitacion = input("Número de habitación");
-        System.out.println("Por favor, ingrese el nombre del producto:");
-        String nombreProducto = input("Nombre del producto");
+        for (int i = 0; i < hotel.getProductos().size();i++){
+            System.out.println(i + ". Nombre del producto: " + hotel.getProductos().get(i).getNombre());
+            System.out.println("Precio del producto: " + hotel.getProductos().get(i).getPrecio());;
+        }
+        System.out.println("Por favor, ingrese el nnumero de producto que desea:");
+        Integer numeroProducto = Integer.parseInt(input("Número de producto"));
+        String nombreProducto = hotel.getProductos().get(numeroProducto).getNombre();
         System.out.println("¿Desea pagar el producto ahora (1) o agregarlo a la cuenta de la habitación (2)?");
         int opcionPago = Integer.parseInt(input("Opción de pago"));
-    
-        float precioProducto = Empleado.pedirProductoRestaurante(idHabitacion, nombreProducto);
-    
-        if (precioProducto >= 0) {
-            System.out.println("Producto solicitado con éxito.");
-            System.out.println("Nombre del producto: " + nombreProducto);
-            System.out.println("Precio del producto: " + precioProducto);
-    
-            if (opcionPago == 1) {
-                System.out.println("El producto ha sido pagado.");
-            } else if (opcionPago == 2) {
-                System.out.println("El producto ha sido agregado a la cuenta de la habitación.");
-            } else {
-                System.out.println("Opción de pago inválida.");
-            }
-        } else {
-            System.out.println("Lo sentimos, no se pudo solicitar el producto.");
+        if (opcionPago == 2){
+            hotel.pedirProductoRestaurante(idHabitacion, numeroProducto);
+            System.out.println("Se agrego correctamente" + nombreProducto + " a sus consumos para pagar en checkout" );
+        }
+        else if (opcionPago == 1){
+            System.out.println("Gracias por haber hecho el pago inmediatamente!!!");
+        }
+        else{
+            System.out.println("Opcion no valida");
+        }
+    }
+
+    private void solicitarServicio(){
+        System.out.println("Por favor, ingrese el número de la habitación:");
+        String idHabitacion = input("Número de habitación");
+        for (int i = 0; i < hotel.getServicios().size(); i++){
+            System.out.println(i + ". Nombre del servicio: " + hotel.getServicios().get(i).getNombre());
+            System.out.println("Precio del servicio: " + hotel.getServicios().get(i).getPrecio());
+        }
+        System.out.println("Por favor, ingrese el numero de servicio que desea:");
+        Integer numeroServicio = Integer.parseInt(input("Número de servicio"));
+        System.out.println("¿Desea pagar el producto ahora (1) o agregarlo a la cuenta de la habitación (2)?");
+        int opcionPago = Integer.parseInt(input("Opción de pago"));
+        if (opcionPago == 2){
+            hotel.registrarServicio(idHabitacion, numeroServicio);
+            System.out.println("Se agrego correctamente" + hotel.getServicios().get(numeroServicio).getNombre() + "a sus consumos para pagar en checkout" );
+        }
+        else if (opcionPago == 1){
+            System.out.println("Gracias por haber hecho el pago inmediatamente!!!");
+        }
+        else{
+            System.out.println("Opcion no valida");
         }
     }
     
@@ -272,17 +324,15 @@ public class App {
         System.out.println("Por favor, ingrese el número de la habitación:");
         String idHabitacion = input("Número de habitación");
     
-        float totalCargos = hotel.realizarCheckout(idHabitacion);
+        float totalCargos = hotel.realizarCheckoutt(idHabitacion);
     
         if (totalCargos >= 0) {
+            System.out.println("Gracias por desocupar la habitacion" + idHabitacion  + " tiene un saldo a pagar de: " + totalCargos);
             System.out.println("Check-out realizado con éxito.");
-            System.out.println("Total de cargos: " + totalCargos);
         } else {
             System.out.println("Lo sentimos, no se pudo realizar el check-out.");
         }
     }
-
-    
     
 
     //Todo lo del huesped
@@ -292,15 +342,13 @@ public class App {
         System.out.println("Por favor ingrese su documento");
         int documento = Integer.parseInt(input("Documento"));
         System.out.println("Por favor ingrese su numero de celular");
-        int numeroCel = Integer.parseInt(input("Numero de celular"));
+        long numeroCel = Long.parseLong(input("Numero de celular"));
         System.out.println("Por favor ingrese su correo electronico");
         String correo = input("Correo electronico");
         hotel.crearHuesped(nombre, documento, numeroCel, correo);
         System.out.println("Huesped creado con exito, ahora podemos reservarle una habitacion!!!");
         Habitacion habitacionAsignada;
         Integer numHabitaciones = Integer.parseInt(input("Ingrese el numero de habitaciones que desea reservar"));
-        
-        
 
         for (int i = 1; i <= numHabitaciones; i++) {
 
@@ -326,8 +374,9 @@ public class App {
             System.out.println("Precio: " + habitacionAsignada.getPrecio());
 
             hotel.realizarReserva(nombre, documento, correo, numeroCel, cantidadPersonas, fechaEntrada, fechaSalida, tipoHabitacion, numMenores, numHabitaciones);
-               
-            }else{
+            System.out.println("Reserva realizada con éxito.");
+            }
+            else{
                 System.out.println("Lo sentimos, no hay habitaciones disponibles que cumplan con los requisitos.");
 
             }

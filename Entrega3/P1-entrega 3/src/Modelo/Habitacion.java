@@ -19,6 +19,9 @@ public class Habitacion {
     private String fechaSalida;
     private double precioBase;
     private float cargosAcumulados;
+    private ArrayList<Consumo> consumos;
+    private Huesped huesped;
+
 
     private Map<String, Double> preciosEspeciales;
 
@@ -32,6 +35,7 @@ public class Habitacion {
         this.precio = precio;
         this.ocupada = ocupada;
         this.camas = new ArrayList<>();
+        this.consumos = new ArrayList<>();
         camas.add(cama);
         //camas.add(cama);
         this.tipo = tipo;
@@ -107,6 +111,10 @@ public class Habitacion {
             return precioBase;
         }
     }
+    // agregar consumos
+    public void agregarConsumo(Consumo consumo) {
+        consumos.add(consumo);
+    }
 
     // Añade este método en la clase Habitacion
     public Map<String, Double> getPreciosEspeciales() {
@@ -120,7 +128,11 @@ public class Habitacion {
     public float getCargosAcumulados() {
         return cargosAcumulados; // Para obtener cargos acumulados 
     }
-    
+
+    public ArrayList<Consumo> getConsumos() {
+        return consumos;
+    }
+
     public void setOcupada(boolean ocupada) {
         this.ocupada = ocupada;
 

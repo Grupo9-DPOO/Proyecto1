@@ -5,7 +5,7 @@ public class Registro_Retiro {
     private String nombreHuesped;
     private int documento;
     private String correo;
-    private int numeroCelular;
+    private long numeroCelular;
     private int personasEsperadas;
     private boolean registro;
     private boolean salida;
@@ -14,12 +14,10 @@ public class Registro_Retiro {
     private String fechaInicio;
     private String fechaFin;
     private int cantidadHabitaciones;
+    private Huesped huesped;
     
-    public Registro_Retiro(String nombreHuesped, int documento, String correo, int numeroCelular, int personasEsperadas, boolean registro, boolean salida, String identificador, int numeroMenores, String fechaInicio, String fechaFin, int cantidadHabitaciones) {
-        this.nombreHuesped = nombreHuesped;
-        this.documento = documento;
-        this.correo = correo;
-        this.numeroCelular = numeroCelular;
+    public Registro_Retiro(Huesped huesped, int personasEsperadas, boolean registro, boolean salida, String identificador, int numeroMenores, String fechaInicio, String fechaFin, int cantidadHabitaciones) {
+        this.huesped = huesped;
         this.personasEsperadas = personasEsperadas;
         this.registro = registro;
         this.salida = salida;
@@ -68,12 +66,15 @@ public class Registro_Retiro {
     }
 
 
-public int getDocumento() {
-    return documento;
-}
+    public int getDocumento() {
+        return documento;
+    }
 
-public String getIdentificador() {
-    return identificador;
-}
+    public String getIdentificador() {
+        return identificador;
+    }
+    public String getNombreHuesped() {
+        return nombreHuesped;
+    }
 }
 

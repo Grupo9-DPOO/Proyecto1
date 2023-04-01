@@ -3,6 +3,7 @@ package Modelo;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class PMS {
     
@@ -10,14 +11,12 @@ public class PMS {
     private ArrayList<Servicio> servicios = new ArrayList<>();
     private ArrayList<Producto> productos = new ArrayList<>();
     private ArrayList<Administrador> administradores = new ArrayList<>();
-    private ArrayList<Empleado> empleados = new ArrayList<>();
-    private ArrayList<Recepcionista> recepcionistas = new ArrayList<>();
     private ArrayList<Huesped> huespedes = new ArrayList<>();
     private Administrador administrador = new Administrador("678", "345", "123", this);
     private Recepcionista recepcionista = new Recepcionista("123", "456", "789", this);
-   
+    private Empleado empleado = new Empleado("123", "456", "789", this);
 
-    public Huesped crearHuesped(String nombre, Integer documento, Integer numeroCel, String correo){
+    public Huesped crearHuesped(String nombre, Integer documento, long numeroCel, String correo){
         Huesped huesped = new Huesped(nombre, documento, numeroCel, correo);
         huespedes.add(huesped);
         return huesped;
@@ -51,9 +50,14 @@ public class PMS {
         administrador.agregarHabitacion(habitacion);
         //habitaciones.add(habitacion);
     }
-
+    public HashMap<String, String> consultarInventarioRecepcionista(){
+        return recepcionista.consultarInventario();
+    }
     public void consultarInventario(){
         administrador.consultarInventario();
+    }
+    public HashMap<String, String> consultarConsumos(){
+        return empleado.consultarConsumos();
     }
     public void agregarProducto(String nombre, double precio, boolean roomService){
         administrador.agregarProducto(nombre, precio, roomService);
@@ -71,13 +75,20 @@ public class PMS {
     public void cargarProductos() throws FileNotFoundException, IOException{
         this.productos = administrador.cargarProductos();
     }
-
-    //Huesped
-    public Habitacion realizarReserva(String nombre, int documento, String email, int celular ,int totalPersonas, String fechaInicio, String fechaFin, String tipoHabitacion, int numeroMenores, int cantidadHabitaciones) {
-        Huesped huesped = new Huesped(nombre, documento, celular, email);
-        return recepcionista.realizarReserva(nombre, documento, email, celular , totalPersonas, fechaInicio, fechaFin, tipoHabitacion, numeroMenores, cantidadHabitaciones);
+    //cargar servicios
+    public void cargarServicios() throws FileNotFoundException, IOException{
+        this.servicios = administrador.cargarServicios();
     }
 
+    //Huesped
+    public Habitacion realizarReserva(String nombre, int documento, String email, long celular ,int totalPersonas, String fechaInicio, String fechaFin, String tipoHabitacion, int numeroMenores, int cantidadHabitaciones) {
+        Huesped huesped = new Huesped(nombre, documento, celular, email);
+        return recepcionista.realizarReserva(huesped, totalPersonas, fechaInicio, fechaFin, tipoHabitacion, numeroMenores, cantidadHabitaciones);
+    }
+
+    public void registrarServicio(String id, int numeroServicio){
+        empleado.registrarServicio(id, numeroServicio);
+    }
     
 
     // getter y setter de la lista habitaciones
@@ -102,7 +113,6 @@ public class PMS {
         this.productos = productos;
     }  
 
-    
 
     // Añade este método en la clase PMS
 public Habitacion buscarHabitacion(String idHabitacion) {
@@ -113,7 +123,12 @@ public Habitacion buscarHabitacion(String idHabitacion) {
     }
     return null; // Si no se encuentra la habitación con el ID dado, devuelve null
 }
-
+public Boolean cancelarReserva(int documento, String idHabitacion, int horasDesdeReserva){
+    return recepcionista.cancelarReserva(documento, idHabitacion, horasDesdeReserva);
+}
+public float realizarCheckoutt(String idHabitacion){
+    return recepcionista.realizarCheckout(idHabitacion);
+}
 public void realizarCheckout(String idHabitacion) {
     Habitacion habitacionARealizarCheckout = null;
     for (Habitacion habitacion : habitaciones) {
@@ -129,6 +144,10 @@ public void realizarCheckout(String idHabitacion) {
     } else {
         System.out.println("No se encontró una habitación con el ID especificado.");
     }
+}
+
+public void pedirProductoRestaurante(String idHabitacion, int numeroProducto){
+    empleado.pedirProductoRestaurante(idHabitacion, numeroProducto);
 }
 
 }

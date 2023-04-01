@@ -13,5 +13,9 @@ public class Empleado {
     public void registrarConsumo(Consumo consumo) {
         consumos.add(consumo);
     }
+
+    public void pedirProductoRestaurante(String nombreProducto, String idHabitacion) {
+        
+    }
 }
 

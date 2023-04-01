@@ -13,6 +13,7 @@ import Modelo.Empleado;
 public class App {
 
     private PMS hotel = new PMS();
+    private Recepcionista recepcionista = new Recepcionista();
 
     public void ejecutarAplicacion() throws FileNotFoundException, IOException {
 	    boolean continuar = true;

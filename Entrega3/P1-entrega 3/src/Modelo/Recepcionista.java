@@ -38,7 +38,7 @@ public class Recepcionista {
         this.hotel = hotel;
     }
 
-    public Habitacion realizarReserva(Huesped huesped, int totalPersonas, String fechaInicio, String fechaFin, String tipoHabitacion, int numeroMenores, int cantidadHabitaciones) {  
+    public Habitacion realizarReserva(Huesped huesped, int totalPersonas, String fechaInicio, String fechaFin, String tipoHabitacion, int numeroMenores, int cantidadHabitaciones, ArrayList<Huesped> acompañantes) {  
         habitacionesDisponibles.clear();
         for (int i = 0; i < hotel.getHabitaciones().size(); i++) {
             boolean disponible = true;
@@ -65,7 +65,7 @@ public class Recepcionista {
         }
 
         Habitacion habitacionSeleccionada = habitacionesDisponibles.get(0);
-        Registro_Retiro nuevoRegistro = new Registro_Retiro(huesped, totalPersonas, true, false, habitacionSeleccionada.getId(), numeroMenores, fechaInicio, fechaFin, cantidadHabitaciones);
+        Registro_Retiro nuevoRegistro = new Registro_Retiro(huesped, totalPersonas, true, false, habitacionSeleccionada.getId(), numeroMenores, fechaInicio, fechaFin, cantidadHabitaciones, acompañantes);
         String idRegistro = nuevoRegistro.getId();
         hotel.anadirCamas(idRegistro, cantidadHabitaciones, totalPersonas);
         registro_Retiro.add(nuevoRegistro);

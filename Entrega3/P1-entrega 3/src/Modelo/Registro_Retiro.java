@@ -15,8 +15,9 @@ public class Registro_Retiro {
     private String fechaFin;
     private int cantidadHabitaciones;
     private Huesped huesped;
+    private ArrayList<Huesped> acompañantes;
     
-    public Registro_Retiro(Huesped huesped, int personasEsperadas, boolean registro, boolean salida, String identificador, int numeroMenores, String fechaInicio, String fechaFin, int cantidadHabitaciones) {
+    public Registro_Retiro(Huesped huesped, int personasEsperadas, boolean registro, boolean salida, String identificador, int numeroMenores, String fechaInicio, String fechaFin, int cantidadHabitaciones, ArrayList<Huesped> acompañantes) {
         this.huesped = huesped;
         this.personasEsperadas = personasEsperadas;
         this.registro = registro;
@@ -26,6 +27,7 @@ public class Registro_Retiro {
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.cantidadHabitaciones = cantidadHabitaciones;
+        this.acompañantes = acompañantes;
     }
     
     public void generarRegistro() {

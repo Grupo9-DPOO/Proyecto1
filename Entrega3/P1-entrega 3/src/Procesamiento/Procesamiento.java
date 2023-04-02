@@ -6,8 +6,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.xml.crypto.Data;
-
 import Modelo.Cama;
 import Modelo.Habitacion;
 import Modelo.Producto;
@@ -22,7 +20,7 @@ public class Procesamiento {
 		ArrayList<Habitacion> habitaciones = new ArrayList<>();
 		
 		// Abrir el archivo y leerlo línea por línea usando un BufferedReader
-		String filename = "data/hab.txt";
+		String filename = "/Users/juanl/Mi unidad/Cuarto Semestre/DPO/Proyecto1-1/Entrega3/P1-entrega 3/data/hab.txt";
 		BufferedReader br = new BufferedReader(new FileReader(filename));
 		String linea = br.readLine(); // La primera línea del archivo se ignora porque únicamente tiene los títulos de
 									// las columnas
@@ -51,7 +49,7 @@ public class Procesamiento {
 		ArrayList<Producto> productos = new ArrayList<>();
 		
 		// Abrir el archivo y leerlo línea por línea usando un BufferedReader
-		BufferedReader br = new BufferedReader(new FileReader("data/menuRestaurante.txt"));
+		BufferedReader br = new BufferedReader(new FileReader("/Users/juanl/Mi unidad/Cuarto Semestre/DPO/Proyecto1-1/Entrega3/P1-entrega 3/data/menuRestaurante.txt"));
 		String linea = br.readLine(); // La primera línea del archivo se ignora porque únicamente tiene los títulos de
 									// las columnas
 			linea = br.readLine();
@@ -79,7 +77,7 @@ public class Procesamiento {
 		ArrayList<Servicio> servicios = new ArrayList<>();
 		
 		// Abrir el archivo y leerlo línea por línea usando un BufferedReader
-		BufferedReader br = new BufferedReader(new FileReader("data/servicios.txt"));
+		BufferedReader br = new BufferedReader(new FileReader("/Users/juanl/Mi unidad/Cuarto Semestre/DPO/Proyecto1-1/Entrega3/P1-entrega 3/data/servicios.txt"));
 		String linea = br.readLine(); // La primera línea del archivo se ignora porque únicamente tiene los títulos de
 									// las columnas
 			linea = br.readLine();

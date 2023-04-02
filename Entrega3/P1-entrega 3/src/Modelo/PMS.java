@@ -82,9 +82,9 @@ public class PMS {
     }
 
     //Huesped
-    public Habitacion realizarReserva(String nombre, int documento, String email, long celular ,int totalPersonas, String fechaInicio, String fechaFin, String tipoHabitacion, int numeroMenores, int cantidadHabitaciones) {
+    public Habitacion realizarReserva(String nombre, int documento, String email, long celular ,int totalPersonas, String fechaInicio, String fechaFin, String tipoHabitacion, int numeroMenores, int cantidadHabitaciones, ArrayList<Huesped> acompañantes) {
         Huesped huesped = new Huesped(nombre, documento, celular, email);
-        return recepcionista.realizarReserva(huesped, totalPersonas, fechaInicio, fechaFin, tipoHabitacion, numeroMenores, cantidadHabitaciones);
+        return recepcionista.realizarReserva(huesped, totalPersonas, fechaInicio, fechaFin, tipoHabitacion, numeroMenores, cantidadHabitaciones, acompañantes);
     }
 
     public void registrarServicio(String id, int numeroServicio){

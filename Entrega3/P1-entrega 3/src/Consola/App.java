@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
-
+import Modelo.Huesped;
 import Modelo.PMS;
 import Modelo.Habitacion;
 
@@ -397,12 +397,24 @@ public class App {
         System.out.println("Huesped creado con exito, ahora podemos reservarle una habitacion!!!");
         Habitacion habitacionAsignada;
         Integer numHabitaciones = Integer.parseInt(input("Ingrese el numero de habitaciones que desea reservar"));
-
+        ArrayList<Huesped> acompañantes = new ArrayList<>();
         for (int i = 0; i < numHabitaciones; i++) {
 
             System.out.println("Por favor ingrese la cantidad de personas para la habitacioón");
-            int cantidadPersonas = Integer.parseInt(input("Cantidad de personas"));
-            System.out.println("Por favor ingrese la fecha de entrada");
+            int cantidadPersonas = Integer.parseInt(input("Cantidad de personas en la habitación"));
+            for (int j = 1; j < cantidadPersonas; j++) {
+                System.out.println("Por favor ingrese el nombre del acompañante");
+                String nombrePersona = input("Nombre de la persona");
+                System.out.println("Por favor ingrese el documento del acompañante");
+                int documentoPersona = Integer.parseInt(input("Documento de la persona"));
+                System.out.println("Por favor ingrese el numero de celular del acompañante");
+                long numeroCelPersona = Long.parseLong(input("Numero de celular de la persona"));
+                System.out.println("Por favor ingrese el correo electronico del acompañante");
+                String correoPersona = input("Correo electronico de la persona");
+                Huesped acompañante = hotel.crearHuesped(nombrePersona, documentoPersona, numeroCelPersona, correoPersona);
+                acompañantes.add(acompañante);
+            }
+            System.out.println("Por favor ingrese la fecha de reserva");
             String fechaEntrada = input("Fecha de entrada formato: AAAA-MM-DD");
             System.out.println("Por favor ingrese la fecha de salida");
             String fechaSalida = input("Fecha de salida en formato: AAAA-MM-DD");
@@ -415,7 +427,7 @@ public class App {
             else if (tipoHabitacion == 3){hab = "estándar";}
             else{System.out.println("Opcion no valida");}
 
-            habitacionAsignada = hotel.realizarReserva(nombre, documento, correo, numeroCel, cantidadPersonas, fechaEntrada, fechaSalida, hab, numMenores, numHabitaciones);
+            habitacionAsignada = hotel.realizarReserva(nombre, documento, correo, numeroCel, cantidadPersonas, fechaEntrada, fechaSalida, hab, numMenores, numHabitaciones, acompañantes);
 
             //Info de la habitación asignada
             if(habitacionAsignada!=null){
@@ -426,7 +438,11 @@ public class App {
             System.out.println("Capacidad: " + habitacionAsignada.getCapacidad());
             System.out.println("Tipo de habitación: " + habitacionAsignada.getTipo());
             System.out.println("Precio: " + habitacionAsignada.getPrecio());
-
+            String nombreAcompañante = nombre;
+            for (Huesped acompañante : acompañantes){
+                nombreAcompañante += ", " + acompañante.getNombre();
+            }
+            System.out.println("En esta habitacion se hospedaran: " + nombreAcompañante);
             //hotel.realizarReserva(nombre, documento, correo, numeroCel, cantidadPersonas, fechaEntrada, fechaSalida, tipoHabitacion, numMenores, numHabitaciones);
             System.out.println("Reserva realizada con éxito.");
             System.out.println("==================================");

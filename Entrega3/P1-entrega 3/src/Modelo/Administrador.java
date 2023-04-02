@@ -127,12 +127,12 @@ public class Administrador{
         this.password = password;
     }
 
-    public void cambiarPrecioHabitacion(String idHabitacion, String fecha, double nuevoPrecio) {
-        Habitacion habitacion = hotel.buscarHabitacion(idHabitacion);
+    public void cambiarPrecioHabitacion(String tipoHabitacion, String fecha, double nuevoPrecio) {
+        Habitacion habitacion = hotel.buscarHabitacion(tipoHabitacion);
         if (habitacion != null) {
             habitacion.getPreciosEspeciales().put(fecha, nuevoPrecio);
         } else {
-            System.out.println("Habitación no encontrada");
+            System.out.println("Tipo de habitacion no válida");
         }
     }
     

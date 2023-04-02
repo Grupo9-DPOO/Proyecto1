@@ -5,6 +5,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.xml.crypto.Data;
+
 import Modelo.Cama;
 import Modelo.Habitacion;
 import Modelo.Producto;
@@ -19,7 +22,7 @@ public class Procesamiento {
 		ArrayList<Habitacion> habitaciones = new ArrayList<>();
 		
 		// Abrir el archivo y leerlo línea por línea usando un BufferedReader
-		String filename = "/Users/juanl/Mi unidad/Cuarto Semestre/DPO/Proyecto1-1/Entrega3/P1-entrega 3/data/hab.txt";
+		String filename = "data/hab.txt";
 		BufferedReader br = new BufferedReader(new FileReader(filename));
 		String linea = br.readLine(); // La primera línea del archivo se ignora porque únicamente tiene los títulos de
 									// las columnas

@@ -116,7 +116,6 @@ public class Habitacion {
         consumos.add(consumo);
     }
 
-    // Añade este método en la clase Habitacion
     public Map<String, Double> getPreciosEspeciales() {
         return preciosEspeciales;
 }

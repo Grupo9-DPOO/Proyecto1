@@ -7,12 +7,14 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 
 import Modelo.PMS;
+import Modelo.Administrador;
 import Modelo.Habitacion;
 
 
 public class App {
 
     private PMS hotel = new PMS();
+    private Administrador admin = new Administrador("nombre", "login", "password", hotel);
 
     public void ejecutarAplicacion() throws FileNotFoundException, IOException {
 	    boolean continuar = true;
@@ -51,10 +53,11 @@ public class App {
             if (opciones_admin == 1){
                  modificarPrecioHabitacion();
             }
-            //Cargar y agragar habitaciones
+            //Cargar, agregar habitaciones, y modificar el precio de cierto tipo segun fechas
             else if (opciones_admin == 2){
                 System.out.println("1. Agregar habitacion. ");
                 System.out.println("2. Cargar habitaciones. ");
+                System.out.println("3. Cambiar tarifa por tipo de cuarto ");
                 int carga = Integer.parseInt(input("Por favor seleccione una opcion \n"));
                 if (carga == 1){
                     crearHabitacion();
@@ -62,6 +65,12 @@ public class App {
                 else if (carga == 2){
                     hotel.cargarHabitaciones();
                     hotel.cargarServicios();
+                }
+                else if(carga == 3){
+                    String tipoHabitacion = input("Por favor ingrese el tipo de habitacion que desea cambiar (suite, suite doble, estandard) (por ahora es id) \n");
+                    String fecha = input("Por favor ingrese la fecha en la que desea cambiar el precio (formato: AAAA/MM/DD) \n");
+                    float nuevoPrecio = Float.parseFloat(input("Por favor ingrese el nuevo precio de la habitacion \n"));
+                    admin.cambiarPrecioHabitacion(tipoHabitacion, fecha, nuevoPrecio);
                 }
                 else{
                     System.out.println("Opcion no valida");
@@ -358,7 +367,7 @@ public class App {
             String fechaEntrada = input("Fecha de entrada formato: AAAA/MM/DD");
             System.out.println("Por favor ingrese la fecha de salida");
             String fechaSalida = input("Fecha de salida en formato: AAAA/MM/DD");
-            System.out.println("Por facor ingrese el tipo de habitacion que desea");
+            System.out.println("Por favor ingrese el tipo de habitacion que desea");
             String tipoHabitacion = input("Tipo de habitacion: suite, suite doble o estandard");
             Integer numMenores = Integer.parseInt(input("Ingrese el numero de menores de edad"));
 

@@ -64,6 +64,9 @@ public class Administrador{
     public void agregarProducto(String nombre, double precio, boolean roomService) {
         Producto producto = new Producto(nombre, precio, roomService);
         hotel.getProductos().add(producto);
+        if (roomService){
+            hotel.getProductosRoomService().add(producto);
+        }
     }
 
     public void modificarProductos(String productoId, Producto productoModificado) {

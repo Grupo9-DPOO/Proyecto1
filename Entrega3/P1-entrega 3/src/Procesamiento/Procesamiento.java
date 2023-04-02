@@ -51,7 +51,7 @@ public class Procesamiento {
 		ArrayList<Producto> productos = new ArrayList<>();
 		
 		// Abrir el archivo y leerlo línea por línea usando un BufferedReader
-		BufferedReader br = new BufferedReader(new FileReader("/Users/juanl/Mi unidad/Cuarto Semestre/DPO/Proyecto1-1/Entrega3/P1-entrega 3/data/menuRestaurante.txt"));
+		BufferedReader br = new BufferedReader(new FileReader("data/menuRestaurante.txt"));
 		String linea = br.readLine(); // La primera línea del archivo se ignora porque únicamente tiene los títulos de
 									// las columnas
 			linea = br.readLine();
@@ -61,8 +61,7 @@ public class Procesamiento {
 				String[] partes = linea.split(";");
 				
 				
-				Producto producto = new Producto(partes[0], Double.parseDouble(partes[1]), Boolean.parseBoolean(partes[2]));
-				
+				Producto producto = new Producto(partes[0], Double.parseDouble(partes[1]), Boolean.parseBoolean(partes[3]));
 				productos.add(producto);
 				
 				
@@ -80,7 +79,7 @@ public class Procesamiento {
 		ArrayList<Servicio> servicios = new ArrayList<>();
 		
 		// Abrir el archivo y leerlo línea por línea usando un BufferedReader
-		BufferedReader br = new BufferedReader(new FileReader("/Users/juanl/Mi unidad/Cuarto Semestre/DPO/Proyecto1-1/Entrega3/P1-entrega 3/data/servicios.txt"));
+		BufferedReader br = new BufferedReader(new FileReader("data/servicios.txt"));
 		String linea = br.readLine(); // La primera línea del archivo se ignora porque únicamente tiene los títulos de
 									// las columnas
 			linea = br.readLine();

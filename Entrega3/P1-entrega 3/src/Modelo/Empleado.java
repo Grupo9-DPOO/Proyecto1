@@ -25,10 +25,30 @@ public class Empleado {
         consumos.add(consumo);
     }
 
-    public void pedirProductoRestaurante(String idHabitacion, int numeroProducto) {
+    public void pedirProductoRestaurante(String idHabitacion, int numeroProducto, int roomService) {
+        if (roomService == 2){
+            for (int i = 0; i < hotel.getHabitaciones().size(); i++) {
+                if (hotel.getHabitaciones().get(i).getId().equals(idHabitacion)) {
+                    Consumo consumo = new Consumo(hotel.getProductos().get(numeroProducto).getPrecio(), "12/12/2012", idHabitacion, false, hotel.getProductos().get(numeroProducto).getNombre()); 
+                    hotel.getHabitaciones().get(i).agregarConsumo(consumo);
+                    }
+                }
+        }
+        else if (roomService == 1){
+            for (int i = 0; i < hotel.getHabitaciones().size(); i++) {
+                if (hotel.getHabitaciones().get(i).getId().equals(idHabitacion)) {
+                    Consumo consumo = new Consumo(hotel.getProductosRoomService().get(numeroProducto).getPrecio(), "12/12/2012", idHabitacion, false, hotel.getProductosRoomService().get(numeroProducto).getNombre()); 
+                    hotel.getHabitaciones().get(i).agregarConsumo(consumo);
+                    }
+                }
+        }
+
+    }
+
+    public void pedirProductoRestauranteInmediato(String idHabitacion, int numeroProducto) {
         for (int i = 0; i < hotel.getHabitaciones().size(); i++) {
             if (hotel.getHabitaciones().get(i).getId().equals(idHabitacion)) {
-                Consumo consumo = new Consumo(hotel.getProductos().get(numeroProducto).getPrecio(), "12/12/2012", idHabitacion, false, hotel.getProductos().get(numeroProducto).getNombre()); 
+                Consumo consumo = new Consumo(0, "12/12/2012", idHabitacion, false, hotel.getProductos().get(numeroProducto).getNombre()); 
                 hotel.getHabitaciones().get(i).agregarConsumo(consumo);
                 }
             }
@@ -42,12 +62,24 @@ public class Empleado {
                 }
             }
     }
-    public HashMap<String, String> consultarConsumos(){
-        HashMap<String, String> consumos = new HashMap<>();
+    public void registrarServicioInmediato(String idHabitacion, int numeroServicio) {
         for (int i = 0; i < hotel.getHabitaciones().size(); i++) {
-            for (int j = 0; j < hotel.getHabitaciones().get(i).getConsumos().size(); j++) {
-                consumos.put(hotel.getHabitaciones().get(i).getId(), hotel.getHabitaciones().get(i).getConsumos().get(j).getNombre());
+            if (hotel.getHabitaciones().get(i).getId().equals(idHabitacion)) {
+                Consumo consumo = new Consumo(0, "12/12/2012", idHabitacion, false, hotel.getServicios().get(numeroServicio).getNombre()); 
+                hotel.getHabitaciones().get(i).agregarConsumo(consumo);
+                }
             }
+    }
+
+
+    public ArrayList<String>consultarConsumos(String idHabitacion) {
+        ArrayList<String> consumos = new ArrayList<>();
+        for (int i = 0; i < hotel.getHabitaciones().size(); i++) {
+            if (hotel.getHabitaciones().get(i).getId().equals(idHabitacion)){
+                for (int j = 0; j < hotel.getHabitaciones().get(i).getConsumos().size(); j++) {
+                    consumos.add(hotel.getHabitaciones().get(i).getConsumos().get(j).getNombre());
+                }
+             }
         }
         return consumos;
     }

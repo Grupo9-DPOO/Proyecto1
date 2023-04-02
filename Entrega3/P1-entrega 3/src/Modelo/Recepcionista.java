@@ -1,4 +1,5 @@
 package Modelo;
+import java.text.BreakIterator;
 import java.util.*;
 
 public class Recepcionista {
@@ -53,10 +54,10 @@ public class Recepcionista {
 
             if (disponible 
             && habitacionActual.getTipo().equals(tipoHabitacion) 
-            && habitacionActual.getCapacidad() >= totalPersonas) {
-
+            && habitacionActual.getCapacidad() >= totalPersonas) { 
                     habitacionesDisponibles.add(habitacionActual);
-                }  
+                    
+                } 
         }
 
         if (habitacionesDisponibles.isEmpty()) {
@@ -64,12 +65,10 @@ public class Recepcionista {
         }
 
         Habitacion habitacionSeleccionada = habitacionesDisponibles.get(0);
-
         Registro_Retiro nuevoRegistro = new Registro_Retiro(huesped, totalPersonas, true, false, habitacionSeleccionada.getId(), numeroMenores, fechaInicio, fechaFin, cantidadHabitaciones);
         String idRegistro = nuevoRegistro.getId();
         hotel.anadirCamas(idRegistro, cantidadHabitaciones, totalPersonas);
         registro_Retiro.add(nuevoRegistro);
-
         return habitacionSeleccionada;
 
 
@@ -82,7 +81,7 @@ public class Recepcionista {
         Registro_Retiro registroParaEliminar = null;
     
         for (Registro_Retiro registro : registro_Retiro) {
-            if (registro.getDocumento() == documento && registro.getIdentificador().equals(idHabitacion)) {
+            if (registro.getDocumento() == documento && registro.getId().equals(idHabitacion)) {
                 registroParaEliminar = registro;
                 break;
             }
@@ -103,31 +102,32 @@ public class Recepcionista {
                 for (int j = 0; j < hotel.getHabitaciones().get(i).getConsumos().size(); j++){
                     totalCargos += hotel.getHabitaciones().get(i).getConsumos().get(j).getPrecio();
                 }
-
+                //eliminar habitacion de registros
+                for (int k = 0; k < registro_Retiro.size(); k++){
+                    if (registro_Retiro.get(k).getId().equals(idHabitacion)){
+                        registro_Retiro.remove(k);
+                // eliminar consumos de la habitacion
+                        hotel.getHabitaciones().get(i).getConsumos().clear();
+                    }
+                }
             }
         }
         return totalCargos;
     }
 
 
-    public HashMap<String,String> consultarInventario(){
+    public HashMap<String,String> consultarInventario(){;
         HashMap<String,String> datos = new HashMap<>();
-        for (int i = 0; i < hotel.getHabitaciones().size(); i++){
-            // recorrer registros 
-            for (int j = 0; j < registro_Retiro.size(); j++){
-                if (registro_Retiro.get(j).getIdentificador().equals(hotel.getHabitaciones().get(i).getId())){
-                    nombre = registro_Retiro.get(j).getNombreHuesped();
-                    datos.put(hotel.getHabitaciones().get(i).getId(), nombre);
-                }
-                else {
-                    datos.put(hotel.getHabitaciones().get(i).getId(), "No hay huespedes");
-                }
-            }
-            
+        for(int i = 0; i < registro_Retiro.size(); i++){
+            datos.put(registro_Retiro.get(i).getId(),"Habitacion a nombre de "+registro_Retiro.get(i).getNombreHuesped() + " con documento "+registro_Retiro.get(i).getDocumento());
+        }
+        for(int j =0; j < hotel.getHabitaciones().size(); j++){
+            if (!datos.containsKey(hotel.getHabitaciones().get(j).getId()))
+            datos.put(hotel.getHabitaciones().get(j).getId(),"No hay huespedes");   
         }
         return datos;
     }
-    }
+}
 
     
 

@@ -11,6 +11,7 @@ public class PMS {
     private ArrayList<Servicio> servicios = new ArrayList<>();
     private ArrayList<Producto> productos = new ArrayList<>();
     private ArrayList<Administrador> administradores = new ArrayList<>();
+    private ArrayList<Producto> productosRoomService = new ArrayList<>();
     private ArrayList<Huesped> huespedes = new ArrayList<>();
     private Administrador administrador = new Administrador("678", "345", "123", this);
     private Recepcionista recepcionista = new Recepcionista("123", "456", "789", this);
@@ -56,8 +57,8 @@ public class PMS {
     public void consultarInventario(){
         administrador.consultarInventario();
     }
-    public HashMap<String, String> consultarConsumos(){
-        return empleado.consultarConsumos();
+    public ArrayList<String> consultarConsumos(String idHabitacion){
+        return empleado.consultarConsumos(idHabitacion);
     }
     public void agregarProducto(String nombre, double precio, boolean roomService){
         administrador.agregarProducto(nombre, precio, roomService);
@@ -89,8 +90,9 @@ public class PMS {
     public void registrarServicio(String id, int numeroServicio){
         empleado.registrarServicio(id, numeroServicio);
     }
-    
-
+    public void registrarServicioInmediato(String id, int numeroServicio){
+        empleado.registrarServicioInmediato(id, numeroServicio);
+    }
     // getter y setter de la lista habitaciones
     public ArrayList<Habitacion> getHabitaciones() {
         return habitaciones;
@@ -109,32 +111,36 @@ public class PMS {
     public ArrayList<Producto> getProductos() {
         return productos;
     }
+    //getter y setter de la lista productos room service
+    public ArrayList<Producto> getProductosRoomService() {
+        return productosRoomService;
+    }
     public void setProductos(ArrayList<Producto> productos) {
         this.productos = productos;
     }  
 
 
     // Añade este método en la clase PMS
-public Habitacion buscarHabitacion(String idHabitacion) {
-    for (Habitacion habitacion : habitaciones) {
-        if (habitacion.getId().equals(idHabitacion)) {
-            return habitacion;
-        }
+    public Habitacion buscarHabitacion(String idHabitacion) {
+        for (Habitacion habitacion : habitaciones) {
+            if (habitacion.getId().equals(idHabitacion)) {
+                return habitacion;
+            }
     }
     return null; // Si no se encuentra la habitación con el ID dado, devuelve null
-}
-public Boolean cancelarReserva(int documento, String idHabitacion, int horasDesdeReserva){
-    return recepcionista.cancelarReserva(documento, idHabitacion, horasDesdeReserva);
-}
-public float realizarCheckoutt(String idHabitacion){
-    return recepcionista.realizarCheckout(idHabitacion);
-}
-public void realizarCheckout(String idHabitacion) {
-    Habitacion habitacionARealizarCheckout = null;
-    for (Habitacion habitacion : habitaciones) {
-        if (habitacion.getId().equals(idHabitacion)) {
-            habitacionARealizarCheckout = habitacion;
-            break;
+    }
+    public Boolean cancelarReserva(int documento, String idHabitacion, int horasDesdeReserva){
+        return recepcionista.cancelarReserva(documento, idHabitacion, horasDesdeReserva);
+    }
+    public float realizarCheckoutt(String idHabitacion){
+        return recepcionista.realizarCheckout(idHabitacion);
+    }
+    public void realizarCheckout(String idHabitacion) {
+        Habitacion habitacionARealizarCheckout = null;
+        for (Habitacion habitacion : habitaciones) {
+            if (habitacion.getId().equals(idHabitacion)) {
+                habitacionARealizarCheckout = habitacion;
+                break;
         }
     }
     if (habitacionARealizarCheckout != null) { //Para hacer checkout de la habitacion
@@ -143,14 +149,30 @@ public void realizarCheckout(String idHabitacion) {
         habitacionARealizarCheckout.setFechaSalida(null);
     } else {
         System.out.println("No se encontró una habitación con el ID especificado.");
+        }
+    }   
+    public void cambiarPrecioHabitacion(String tipoHabitacion,String fecha,float nuevoPrecio){
+        administrador.cambiarPrecioHabitacion(tipoHabitacion, fecha, nuevoPrecio);
+    }   
+
+    public void pedirProductoRestaurante(String idHabitacion, int numeroProducto, int roomService){
+        empleado.pedirProductoRestaurante(idHabitacion, numeroProducto, roomService);
     }
-}
+    public void pedirProductoRestauranteInmediato(String idHabitacion, int numeroProducto)
+        {
+        empleado.pedirProductoRestauranteInmediato(idHabitacion, numeroProducto);
+    }
+    //agregar productos room service
 
-public void pedirProductoRestaurante(String idHabitacion, int numeroProducto){
-    empleado.pedirProductoRestaurante(idHabitacion, numeroProducto);
-}
+    public void agregarProductoRoomService(){
+        for (Producto producto : productos) {
+            if(producto.isRoomService()){
+                productosRoomService.add(producto);
+            }
+        }
+        
+    }
 
 }
-
 
 

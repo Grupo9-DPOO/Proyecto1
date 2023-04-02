@@ -1,18 +1,56 @@
 id;ubicacion;capacidad;tipo;precio;tamanioCama;capacidadCama;camaNinios;ocupada;balcon;cocina;vista;fechaEntrada;fechaSalida;precioBase
 101;Tercer piso;2;suite doble;250.00;1.8;2;false;false;true;false;false;"";"";0.00
-102;Cuarto piso;1;estándar;150.00;1.5;1;false;false;false;true;true;"";"";0.01
-103;Quinto piso;4;suite;450.00;2.0;2;false;false;true;true;true;"";"";0.02
-104;Segundo piso;3;suite doble;300.00;1.8;2;false;false;false;true;true;"";"";0.03
-105;Primer piso;2;estándar;175.00;1.6;2;false;false;false;false;false;"";"";0.04
-106;Tercer piso;2;suite doble;250.00;1.8;2;false;false;true;false;false;"";"";0.05
-107;Cuarto piso;1;estándar;150.00;1.5;1;false;false;false;true;true;"";"";0.06
-108;Quinto piso;4;suite;450.00;2.0;2;false;false;true;true;true;"";"";0.07
-109;Segundo piso;3;suite doble;300.00;1.8;2;false;false;false;true;true;"";"";0.08
-110;Primer piso;2;estándar;175.00;1.6;2;false;false;false;false;false;"";"";0.09
-111;Tercer piso;2;suite doble;250.00;1.8;2;false;false;true;false;false;"";"";0.10
-112;Cuarto piso;1;estándar;150.00;1.5;1;false;false;false;true;true;"";"";0.11
-113;Quinto piso;4;suite;450.00;2.0;2;false;false;true;true;true;"";"";0.12
-114;Segundo piso;3;suite doble;300.00;1.8;2;false;false;false;true;true;"";"";0.13
-115;Primer piso;2;estándar;175.00;1.6;2;false;false;false;false;false;"";"";0.14
-116;Tercer piso;2;suite doble;250.00;1.8;2;false;false;true;false;false;"";"";0.15
-117;Cuarto piso;1;estándar;150.00;1.5;1;false;false;false;true;true;"";"";0.16
+102;Cuarto piso;1;estándar;150.00;1.5;1;false;false;false;true;true;"";"";0.0
+103;Quinto piso;4;suite;450.00;2.0;2;false;false;true;true;true;"";"";0.0
+104;Segundo piso;3;suite doble;300.00;1.8;2;false;false;false;true;true;"";"";0.0
+105;Primer piso;2;estándar;175.00;1.6;2;false;false;false;false;false;"";"";0.0
+106;Tercer piso;2;suite doble;250.00;1.8;2;false;false;true;false;false;"";"";0.0
+107;Cuarto piso;1;estándar;150.00;1.5;1;false;false;false;true;true;"";"";0.0
+108;Quinto piso;4;suite doble;450.00;2.0;2;false;false;true;true;true;"";"";0.0
+109;Segundo piso;3;suite doble;300.00;1.8;2;false;false;false;true;true;"";"";0.0
+110;Primer piso;2;estándar;175.00;1.6;2;false;false;false;false;false;"";"";0.0
+111;Tercer piso;2;suite doble;250.00;1.8;2;false;false;true;false;false;"";"";0.0
+112;Cuarto piso;1;estándar;150.00;1.5;1;false;false;false;true;true;"";"";0.0
+113;Quinto piso;4;suite;450.00;2.0;2;false;false;true;true;true;"";"";0.0
+114;Segundo piso;3;suite doble;300.00;1.8;2;false;false;false;true;true;"";"";0.0
+115;Primer piso;2;estándar;175.00;1.6;2;false;false;false;false;false;"";"";0.0
+116;Tercer piso;2;suite doble;250.00;1.8;2;false;false;true;false;false;"";"";0.0
+117;Cuarto piso;1;estándar;150.00;1.5;1;false;false;false;true;true;"";"";0.0
+118;Cuarto piso;1;estándar;180.00;1.5;1;true;false;false;false;true;"";"";0.0
+119;Quinto piso;4;suite doble;500.00;2.2;2;false;false;true;true;true;"";"";0.0
+120;Segundo piso;3;suite;350.00;1.9;2;false;false;false;true;false;"";"";0.0
+121;Primer piso;2;estándar;200.00;1.7;2;false;false;false;false;false;"";"";0.0
+122;Tercer piso;2;suite doble;280.00;2.0;2;false;false;true;false;false;"";"";0.0
+123;Cuarto piso;1;estándar;180.00;1.5;1;true;false;false;false;true;"";"";0.0
+124;Quinto piso;4;suite;450.00;2.0;2;false;false;true;true;true;"";"";0.0
+125;Segundo piso;3;suite doble;320.00;1.9;2;false;false;false;true;false;"";"";0.0
+126;Primer piso;2;estándar;190.00;1.7;2;false;false;false;false;false;"";"";0.0
+127;Tercer piso;2;suite doble;280.00;2.0;2;false;false;true;false;false;"";"";0.0
+128;Cuarto piso;1;estándar;180.00;1.5;1;true;false;false;false;true;"";"";0.0
+129;Quinto piso;4;suite doble;500.00;2.2;2;false;false;true;true;true;"";"";0.0
+130;Segundo piso;3;suite;350.00;1.9;2;false;false;false;true;false;"";"";0.0
+131;Primer piso;2;estándar;200.00;1.7;2;false;false;false;false;false;"";"";0.0
+132;Tercer piso;2;suite doble;280.00;2.0;2;false;false;true;false;false;"";"";0.0
+133;Cuarto piso;1;estándar;180.00;1.5;1;true;false;false;false;true;"";"";0.0
+134;Quinto piso;4;suite;450.00;2.0;2;false;false;true;true;true;"";"";0.0
+135;Segundo piso;3;suite doble;320.00;1.9;2;false;false;false;true;false;"";"";0.0
+136;Primer piso;2;estándar;190.00;1.7;2;false;false;false;false;false;"";"";0.0
+137;Tercer piso;2;suite;350.00;1.9;2;false;false;false;true;false;"";"";0.0
+138;Cuarto piso;1;estándar;180.00;1.5;1;true;false;false;false;true;"";"";0.0
+139;Quinto piso;4;suite doble;500.00;2.2;2;false;false;true;true;true;"";"";0.0
+140;Segundo piso;3;suite;350.00;1.9;2;false;false;false;true;false;"";"";0.0
+141;Primer piso;2;estándar;200.00;1.7;2;false;false;false;false;false;"";"";0.0
+142;Tercer piso;2;suite doble;280.00;2.0;2;false;false;true;false;false;"";"";0.0
+143;Cuarto piso;1;estándar;180.00;1.5;1;true;false;false;false;true;"";"";0.0
+144;Quinto piso;4;suite;450.00;2.0;2;false;false;true;true;true;"";"";0.0
+145;Segundo piso;3;suite doble;320.00;1.9;2;false;false;false;true;false;"";"";0.0
+146;Primer piso;2;estándar;190.00;1.7;2;false;false;false;false;false;"";"";0.0
+147;Tercer piso;2;suite doble;280.00;2.0;2;false;false;true;false;false;"";"";0.0
+148;Cuarto piso;1;estándar;180.00;1.5;1;true;false;false;false;true;"";"";0.0
+149;Quinto piso;4;suite doble;500.00;2.2;2;false;false;true;true;true;"";"";0.0
+150;Segundo piso;3;suite;350.00;1.9;2;false;false;false;true;false;"";"";0.0
+151;Primer piso;4;estándar;200.00;1.7;2;false;false;false;false;false;"";"";0.0
+152;Tercer piso;3;suite doble;280.00;2.0;2;false;false;true;false;false;"";"";0.0
+153;Cuarto piso;5;estándar;180.00;1.5;1;true;false;false;false;true;"";"";0.0
+154;Quinto piso;4;suite;450.00;2.0;2;false;false;true;true;true;"";"";0.0
+155;Segundo piso;3;suite doble;320.00;1.9;2;false;false;false;true;false;"";"";0.0

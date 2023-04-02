@@ -67,14 +67,11 @@ public class Registro_Retiro {
 
 
     public int getDocumento() {
-        return documento;
+        return huesped.getDocumento();
     }
 
-    public String getIdentificador() {
-        return identificador;
-    }
     public String getNombreHuesped() {
-        return nombreHuesped;
+        return huesped.getNombre();
     }
 }
 

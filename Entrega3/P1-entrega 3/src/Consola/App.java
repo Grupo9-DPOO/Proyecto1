@@ -400,7 +400,7 @@ public class App {
         ArrayList<Huesped> acompañantes = new ArrayList<>();
         for (int i = 0; i < numHabitaciones; i++) {
 
-            System.out.println("Por favor ingrese la cantidad de personas para la habitacioón");
+            System.out.println("Por favor ingrese la cantidad de personas para la habitacioón contando al que reserva");
             int cantidadPersonas = Integer.parseInt(input("Cantidad de personas en la habitación"));
             for (int j = 1; j < cantidadPersonas; j++) {
                 System.out.println("Por favor ingrese el nombre del acompañante");
@@ -438,7 +438,7 @@ public class App {
             System.out.println("Capacidad: " + habitacionAsignada.getCapacidad());
             System.out.println("Tipo de habitación: " + habitacionAsignada.getTipo());
             System.out.println("Precio: " + habitacionAsignada.getPrecio());
-            String nombreAcompañante = nombre;
+            String nombreAcompañante = nombre + " (Principal)";
             for (Huesped acompañante : acompañantes){
                 nombreAcompañante += ", " + acompañante.getNombre();
             }
@@ -446,6 +446,7 @@ public class App {
             //hotel.realizarReserva(nombre, documento, correo, numeroCel, cantidadPersonas, fechaEntrada, fechaSalida, tipoHabitacion, numMenores, numHabitaciones);
             System.out.println("Reserva realizada con éxito.");
             System.out.println("==================================");
+            acompañantes.clear();
             }
             
             else{

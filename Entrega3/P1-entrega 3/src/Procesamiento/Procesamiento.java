@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import Modelo.Cama;
 import Modelo.Habitacion;
@@ -20,8 +22,11 @@ public class Procesamiento {
 		ArrayList<Habitacion> habitaciones = new ArrayList<>();
 		
 		// Abrir el archivo y leerlo línea por línea usando un BufferedReader
-		String filename = "data/hab.txt";
-		BufferedReader br = new BufferedReader(new FileReader(filename));
+		InputStream inputStream = Procesamiento.class.getResourceAsStream("hab.txt");
+		InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+		BufferedReader br = new BufferedReader(inputStreamReader);
+
+
 		String linea = br.readLine(); // La primera línea del archivo se ignora porque únicamente tiene los títulos de
 									// las columnas
 			linea = br.readLine();
@@ -49,7 +54,10 @@ public class Procesamiento {
 		ArrayList<Producto> productos = new ArrayList<>();
 		
 		// Abrir el archivo y leerlo línea por línea usando un BufferedReader
-		BufferedReader br = new BufferedReader(new FileReader("data/menuRestaurente.txt"));
+		InputStream inputStream = Procesamiento.class.getResourceAsStream("menuRestaurante.txt");
+		InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+		BufferedReader br = new BufferedReader(inputStreamReader);
+
 		String linea = br.readLine(); // La primera línea del archivo se ignora porque únicamente tiene los títulos de
 									// las columnas
 			linea = br.readLine();
@@ -77,7 +85,10 @@ public class Procesamiento {
 		ArrayList<Servicio> servicios = new ArrayList<>();
 		
 		// Abrir el archivo y leerlo línea por línea usando un BufferedReader
-		BufferedReader br = new BufferedReader(new FileReader("data/servicios.txt"));
+		InputStream inputStream = Procesamiento.class.getResourceAsStream("servicios.txt");
+		InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+		BufferedReader br = new BufferedReader(inputStreamReader);
+
 		String linea = br.readLine(); // La primera línea del archivo se ignora porque únicamente tiene los títulos de
 									// las columnas
 			linea = br.readLine();

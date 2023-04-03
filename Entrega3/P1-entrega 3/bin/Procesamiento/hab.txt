@@ -1,5 +1,5 @@
 id;ubicacion;capacidad;tipo;precio;tamanioCama;capacidadCama;camaNinios;ocupada;balcon;cocina;vista;fechaEntrada;fechaSalida;precioBase
-101;Tercer piso;2;suite doble;250.00;1.8;2;false;false;true;false;false;"";"";0.00
+101;Tercerpiso;2;suite doble;250.00;1.8;2;false;false;true;false;false;"";"";0.00
 102;Cuarto piso;1;estándar;150.00;1.5;1;false;false;false;true;true;"";"";0.0
 103;Quinto piso;4;suite;450.00;2.0;2;false;false;true;true;true;"";"";0.0
 104;Segundo piso;3;suite doble;300.00;1.8;2;false;false;false;true;true;"";"";0.0

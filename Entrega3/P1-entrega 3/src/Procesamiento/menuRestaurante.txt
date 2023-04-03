@@ -1,0 +1,9 @@
+Nombre;Precio;Horas disponibles;cuarto
+Ensalada César;7.50;12:00-20:00;false
+Pizza Margarita;10.00;11:00-23:00;true
+Hamburguesa clásica;8.50;11:00-21:00;true
+Salmón a la parrilla;15.50;16:00-22:00;false
+Pollo al horno;12.00;12:00-18:00;true
+Pasta carbonara;9.00;11:00-23:00;false
+Sopa de tomate;6.50;11:00-19:00;false
+Ensalada de frutas;5.50;08:00-16:00;true

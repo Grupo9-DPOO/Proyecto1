@@ -294,7 +294,7 @@ public class App {
                     System.out.println("Se agrego correctamente" + nombreProducto + " a sus consumos para pagar en checkout" );
                 }
                 else if (opcionPago == 1){
-                    hotel.pedirProductoRestauranteInmediato(idHabitacion, numeroProducto);
+                    hotel.pedirProductoRestauranteInmediato(idHabitacion, numeroProducto, opcionRoomService);
                     System.out.println("==================================");
                     System.out.println("El producto " + nombreProducto + " se le cobrará por un precio de: " + hotel.getProductosRoomService().get(numeroProducto).getPrecio());
                     System.out.println("Gracias por haber hecho el pago inmediatamente!!!");
@@ -322,7 +322,7 @@ public class App {
                     System.out.println("==================================");
                 }
                 else if (opcionPago == 1){
-                    hotel.pedirProductoRestauranteInmediato(idHabitacion, numeroProducto);
+                    hotel.pedirProductoRestauranteInmediato(idHabitacion, numeroProducto, opcionPago);
                     System.out.println("==================================");
                     System.out.println("El producto " + nombreProducto + " se le cobrará por un precio de: " + hotel.getProductos().get(numeroProducto).getPrecio());
                     System.out.println("Gracias por haber hecho el pago inmediatamente!!!");

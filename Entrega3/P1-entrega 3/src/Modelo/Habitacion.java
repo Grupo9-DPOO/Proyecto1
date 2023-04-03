@@ -132,6 +132,7 @@ public class Habitacion {
         return consumos;
     }
 
+
     public void setOcupada(boolean ocupada) {
         this.ocupada = ocupada;
 

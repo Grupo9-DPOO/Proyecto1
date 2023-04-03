@@ -45,13 +45,23 @@ public class Empleado {
 
     }
 
-    public void pedirProductoRestauranteInmediato(String idHabitacion, int numeroProducto) {
-        for (int i = 0; i < hotel.getHabitaciones().size(); i++) {
-            if (hotel.getHabitaciones().get(i).getId().equals(idHabitacion)) {
-                Consumo consumo = new Consumo(0, "12/12/2012", idHabitacion, false, hotel.getProductos().get(numeroProducto).getNombre()); 
-                hotel.getHabitaciones().get(i).agregarConsumo(consumo);
+    public void pedirProductoRestauranteInmediato(String idHabitacion, int numeroProducto, int pago) {
+        if (pago == 1){
+            for (int i = 0; i < hotel.getHabitaciones().size(); i++) {
+                if (hotel.getHabitaciones().get(i).getId().equals(idHabitacion)) {
+                    Consumo consumo = new Consumo(0, "12/12/2012", idHabitacion, true, hotel.getProductosRoomService().get(numeroProducto).getNombre()); 
+                    hotel.getHabitaciones().get(i).agregarConsumo(consumo);
+                    }
                 }
-            }
+        }
+        else if (pago == 2){
+            for (int i = 0; i < hotel.getHabitaciones().size(); i++) {
+                if (hotel.getHabitaciones().get(i).getId().equals(idHabitacion)) {
+                    Consumo consumo = new Consumo(0, "12/12/2012", idHabitacion, true, hotel.getProductos().get(numeroProducto).getNombre()); 
+                    hotel.getHabitaciones().get(i).agregarConsumo(consumo);
+                    }
+                }
+        }
     }
 
     public void registrarServicio(String idHabitacion, int numeroServicio) {

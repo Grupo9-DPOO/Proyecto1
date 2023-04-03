@@ -43,11 +43,14 @@ public class Administrador{
         System.out.println("Inventario de habitaciones:");
         for (int i= 0 ; i < hotel.getHabitaciones().size(); i++) {
             //mostrar informacion de la habitacion
+            System.out.println("=====================================");
             System.out.println("Habitacion " + hotel.getHabitaciones().get(i).getId());
             System.out.println("Tipo: " + hotel.getHabitaciones().get(i).getTipo());
             System.out.println("Capacidad: " + hotel.getHabitaciones().get(i).getCapacidad());
             System.out.println("Precio: " + hotel.getHabitaciones().get(i).getPrecio());
             System.out.println("Estado: " + hotel.getHabitaciones().get(i).getOcupada());
+            System.out.println("Precio especial: " + hotel.getHabitaciones().get(i).getPreciosEspeciales());
+            System.out.println("=====================================");
         }
     }
 
@@ -138,7 +141,4 @@ public class Administrador{
             System.out.println("Tipo de habitacion no válida");
         }
     }
-    
-
-
 }

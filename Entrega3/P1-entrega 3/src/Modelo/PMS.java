@@ -158,9 +158,9 @@ public class PMS {
     public void pedirProductoRestaurante(String idHabitacion, int numeroProducto, int roomService){
         empleado.pedirProductoRestaurante(idHabitacion, numeroProducto, roomService);
     }
-    public void pedirProductoRestauranteInmediato(String idHabitacion, int numeroProducto)
+    public void pedirProductoRestauranteInmediato(String idHabitacion, int numeroProducto, int pago)
         {
-        empleado.pedirProductoRestauranteInmediato(idHabitacion, numeroProducto);
+        empleado.pedirProductoRestauranteInmediato(idHabitacion, numeroProducto, pago);
     }
     //agregar productos room service
 
